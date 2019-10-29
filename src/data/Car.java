@@ -1,7 +1,7 @@
 package data;
 
 public class Car extends Vehicle {
-    int trunkspace;
-    Structure structure;
+    int trunkSpace;
+    CarType carType;
     boolean hasSatNav;
 }

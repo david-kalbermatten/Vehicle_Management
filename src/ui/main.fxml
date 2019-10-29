@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <left>
       <JFXListView depth="1" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
    </left>

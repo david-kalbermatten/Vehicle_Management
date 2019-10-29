@@ -5,13 +5,13 @@ public enum FuelType {
     DIESL("Diesel"),
     ELECTRO("Electro");
 
-    private final String value;
+    private final String fuelType;
 
     FuelType(String fuelType) {
-        value = fuelType;
+        this.fuelType = fuelType;
     }
 
-    public String getValue() {
-        return value;
+    public String getFuelType() {
+        return fuelType;
     }
 }

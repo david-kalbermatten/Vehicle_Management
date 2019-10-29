@@ -1,22 +1,21 @@
 package data;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class Vehicle {
-    String idNumber;
-    String make;
-    String model;
-    int ccm;
-    FuelType fuelType;
-    String exteriorColor;
-    String milage;
-    String licensePlate;
-    int numberOfSeats;
-    VehicleCategory vehicleCategory;
-    Date dateOfPurchase;
-    Double priceOfPurchase;
-    Date aviableFrom;
-    Date aviableUntil;
-    boolean aviability;
+    protected String idNumber;
+    protected String make;
+    protected String model;
+    protected int ccm;
+    protected FuelType fuelType;
+    protected String exteriorColor;
+    protected String millage;
+    protected String licensePlate;
+    protected int numberOfSeats;
+    protected VehicleCategory vehicleCategory;
+    protected Date dateOfPurchase;
+    protected Double priceOfPurchase;
+    protected Date availableFrom;
+    protected Date availableUntil;
+    protected boolean availability;
 }

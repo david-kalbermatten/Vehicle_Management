@@ -1,4 +1,4 @@
-package data;
+package data.vehicle;
 
 public enum VehicleCategory {
     BASIC("Basic"),
@@ -10,7 +10,7 @@ public enum VehicleCategory {
     VehicleCategory(String vehicleCategory) {
         this.vehicleCategory = vehicleCategory;
     }
-    
+
     public String getVehicleCategory() {
         return vehicleCategory;
     }

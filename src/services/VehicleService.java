@@ -1,6 +1,6 @@
 package services;
 
-import data.Vehicle;
+import data.vehicle.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;

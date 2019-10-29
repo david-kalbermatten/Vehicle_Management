@@ -1,4 +1,4 @@
-package data;
+package data.vehicle;
 
 import java.util.Date;
 
@@ -18,4 +18,5 @@ public class Vehicle {
     protected Date availableFrom;
     protected Date availableUntil;
     protected boolean availability;
+
 }

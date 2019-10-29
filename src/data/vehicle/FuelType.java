@@ -1,4 +1,4 @@
-package data;
+package data.vehicle;
 
 public enum FuelType {
     BENZIN("Benzin"),

@@ -1,4 +1,4 @@
-package data;
+package data.vehicle;
 
 public class Transporter extends Vehicle {
     private double heightInCm;

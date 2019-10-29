@@ -11,7 +11,7 @@ public enum VehicleCategory {
         this.vehicleCategory = vehicleCategory;
     }
 
-    public String getVehicleCategory() {
+    public String getValue() {
         return vehicleCategory;
     }
 }

@@ -2,14 +2,14 @@
     -fx-pref-width: 200;
     -fx-min-width: 200;
     -fx-max-width: 200;
-    -fx-background-color: rgb(54, 54, 54);
+    -fx-background-color: rgb(40, 40, 40);
 }
 
 .menu-item {
     -fx-padding: 0.7em 0.57em;
     -fx-font-size: 14px;
     -jfx-button-type: FLAT;
-    -fx-background-color: rgb(40, 40, 40);
+    -fx-background-color: rgb(54, 54, 54);
     -fx-text-fill: WHITE;
     -fx-background-radius: 0;
 }

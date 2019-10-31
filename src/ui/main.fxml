@@ -2,23 +2,40 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSnackbar?>
+<?import java.lang.String?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
-   <right>
-      <Pane prefHeight="0.0" prefWidth="446.0" BorderPane.alignment="CENTER" />
-   </right>
    <left>
-      <VBox maxWidth="191.0" minWidth="100.0" prefHeight="200.0" prefWidth="191.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" prefHeight="26.0" prefWidth="100.0" ripplerFill="#ffc099" text="Menu Item 1" />
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" prefHeight="26.0" prefWidth="100.0" ripplerFill="#ffc099" text="Menu Item 2" />
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" prefHeight="26.0" prefWidth="100.0" ripplerFill="#ffc099" text="Menu Item 3" />
+            <JFXButton fx:id="menuButton1" contentDisplay="CENTER" onAction="#menuAction1" stylesheets="@styles.css" text="Menu Item 1">
+               <styleClass>
+                  <String fx:value="side-menu" />
+                  <String fx:value="menu-item" />
+               </styleClass></JFXButton>
+            <JFXButton contentDisplay="CENTER" onAction="#menuAction2" stylesheets="@styles.css" text="Menu Item 2">
+               <styleClass>
+                  <String fx:value="side-menu" />
+                  <String fx:value="menu-item" />
+               </styleClass></JFXButton>
+            <JFXButton contentDisplay="CENTER" onAction="#menuAction3" stylesheets="@styles.css" text="Menu Item 3">
+               <styleClass>
+                  <String fx:value="side-menu" />
+                  <String fx:value="menu-item" />
+               </styleClass></JFXButton>
          </children></VBox>
    </left>
-   <bottom>
-      <JFXSnackbar BorderPane.alignment="CENTER" />
-   </bottom>
+   <center>
+      <BorderPane prefHeight="300.0" prefWidth="400.0" styleClass="main-pane" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <bottom>
+            <VBox prefHeight="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXSnackbar fx:id="snackbar" />
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </center>
 </BorderPane>

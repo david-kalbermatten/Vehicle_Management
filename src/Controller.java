@@ -74,4 +74,8 @@ public class Controller implements Initializable {
         snackBarContainer.setLeft(snackBarText);
         BorderPane.setAlignment(snackBarText, Pos.CENTER_LEFT);
     }
+
+    public void closeProgram() {
+        System.exit(0);
+    }
 }

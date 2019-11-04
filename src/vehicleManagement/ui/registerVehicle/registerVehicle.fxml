@@ -2,12 +2,11 @@
 
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerVehicle.RegisterVehicle">
    <children>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="363.0" prefWidth="201.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <VBox layoutX="14.0" layoutY="14.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
             <JFXTextField labelFloat="true" promptText="Vehicle ID">
                <VBox.margin>
@@ -17,34 +16,22 @@
             <JFXTextField labelFloat="true" layoutX="10.0" layoutY="63.0" promptText="Model" />
             <JFXTextField labelFloat="true" layoutX="10.0" layoutY="108.0" promptText="ccm" />
             <JFXTextField labelFloat="true" layoutX="10.0" layoutY="108.0" promptText="Model" />
-            <VBox>
-               <children>
-                   <Label text="Fuel Type">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <VBox spacing="5.0">
-                     <children>
-                        <JFXRadioButton mnemonicParsing="false" selected="true" text="RadioButton">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="fuelType" />
-                           </toggleGroup>
-                        </JFXRadioButton>
-                        <JFXRadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$fuelType" />
-                        <JFXRadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$fuelType" />
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </VBox>
-            <JFXTextField labelFloat="true" layoutX="10.0" layoutY="198.0" promptText="Color" />
+            <JFXComboBox fx:id="fuelType" labelFloat="true" prefWidth="200.0" promptText="Fuel Type" />
+            <JFXTextField labelFloat="true" layoutX="10.0" layoutY="198.0" promptText="Exterior Color" />
          </children>
       </VBox>
+      <VBox layoutX="240.0" layoutY="14.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <JFXTextField labelFloat="true" promptText="Millage in [km]">
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField labelFloat="true" layoutX="10.0" layoutY="10.0" promptText="License Plate" />
+            <JFXTextField labelFloat="true" layoutX="10.0" layoutY="64.0" promptText="Number of Seats" />
+            <JFXComboBox fx:id="vehicleCategory" labelFloat="true" prefWidth="200.0" promptText="Vehicle Category" />
+            <JFXDatePicker defaultColor="#00528f" minHeight="-Infinity" overLay="true" prefWidth="215.0" promptText="Date of Purchase" />
+            <JFXTextField labelFloat="true" layoutX="10.0" layoutY="109.0" promptText="Price of Purchase in [CHF]" />
+         </children></VBox>
    </children>
 </AnchorPane>

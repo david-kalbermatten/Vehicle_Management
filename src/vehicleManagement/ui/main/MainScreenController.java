@@ -8,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -32,6 +34,14 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         defineSnackBar();
+        sideMenu.getChildren().forEach(menuItem -> {
+            JFXButton item = ((JFXButton) menuItem);
+            ImageView image = new ImageView("/vehicleManagement/resources/baseline_directions_car_white_48dp.png");
+            image.setFitWidth(24);
+            image.setFitHeight(24);
+            item.setGraphic(image);
+            //item.setGraphicTextGap(20);
+        });
     }
 
     public void changeViewDisplayVehicles() {
@@ -62,7 +72,12 @@ public class MainScreenController implements Initializable {
     }
 
     public void changeViewRegisterRental() {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../registerRental/registerRental.fxml"));
+            rootElement.setCenter(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showSnackBar(int numberOfMenuItem) {

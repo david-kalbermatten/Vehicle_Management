@@ -2,7 +2,7 @@ package vehicleManagement.data.vehicle;
 
 public enum FuelType {
     BENZIN("Benzin"),
-    DIESL("Diesel"),
+    DIESEL("Diesel"),
     ELECTRO("Electro");
 
     private final String fuelType;

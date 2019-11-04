@@ -3,8 +3,8 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehiclesController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehiclesController">
    <children>
-      <JFXButton fx:id="testButton" buttonType="RAISED" layoutX="274.0" layoutY="188.0" mnemonicParsing="false" onAction="#testAction" style="-fx-background-color: grey;" text="Button" />
+      <JFXButton fx:id="testButton" buttonType="RAISED" layoutX="137.0" layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#testAction" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Button" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>

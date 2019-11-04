@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.main.MainScreenController">
+   <left>
+      <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER">
+         <JFXButton fx:id="menuButton1" alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuDisplayVehicles" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 1">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuAction2" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 2">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuAction3" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 3">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+      </VBox>
+   </left>
+   <center>
+      <BorderPane fx:id="rootElement" prefHeight="300.0" prefWidth="400.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

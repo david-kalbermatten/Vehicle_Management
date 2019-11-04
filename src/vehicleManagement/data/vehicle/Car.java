@@ -1,4 +1,4 @@
-package data.vehicle;
+package vehicleManagement.data.vehicle;
 
 public class Car extends Vehicle {
     int trunkSpace;

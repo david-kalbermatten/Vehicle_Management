@@ -1,18 +1,25 @@
-import data.vehicle.Vehicle;
+package vehicleManagement;
+
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import vehicleManagement.services.RentalService;
+import vehicleManagement.services.VehicleService;
 
 public class Main extends Application {
+    public static VehicleService vService;
+    public static RentalService rService;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("ui/main.fxml"));
+        vService = new VehicleService();
+        rService = new RentalService();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicleManagement/ui/main/mainScreen.fxml"));
+        loader.load();
+        Parent root = loader.getRoot();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

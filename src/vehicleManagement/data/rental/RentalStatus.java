@@ -1,4 +1,4 @@
-package data.rental;
+package vehicleManagement.data.rental;
 
 public enum RentalStatus {
     OPEN("offen"),

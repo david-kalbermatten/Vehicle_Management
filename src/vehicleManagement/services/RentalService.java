@@ -1,13 +1,13 @@
-package services;
+package vehicleManagement.services;
 
-import data.rental.Rental;
+import vehicleManagement.data.rental.Rental;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class RentalService {
-    private List<Rental> rentalList = new ArrayList<>();
+    public List<Rental> rentalList = new ArrayList<>();
 
     public void addRental(Rental rentalToAdd) {
         rentalList.remove(rentalToAdd);

@@ -1,4 +1,4 @@
-package data.vehicle;
+package vehicleManagement.data.vehicle;
 
 public enum FuelType {
     BENZIN("Benzin"),

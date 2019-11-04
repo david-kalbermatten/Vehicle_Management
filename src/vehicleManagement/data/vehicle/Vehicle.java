@@ -1,4 +1,4 @@
-package data.vehicle;
+package vehicleManagement.data.vehicle;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package data.vehicle;
+package vehicleManagement.data.vehicle;
 
 public class Motorcycle extends Vehicle {
     private int fuelCapacity;

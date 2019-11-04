@@ -1,6 +1,6 @@
-package data.rental;
+package vehicleManagement.data.rental;
 
-import data.vehicle.Vehicle;
+import vehicleManagement.data.vehicle.Vehicle;
 
 import java.util.Date;
 

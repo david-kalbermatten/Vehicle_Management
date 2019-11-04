@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXListView layoutX="14.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@/vehicleManagement/ui/styles/styles.css" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="14.0" />
-      <JFXButton layoutX="534.0" layoutY="361.0" mnemonicParsing="false" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <JFXButton layoutX="14.0" layoutY="361.0" mnemonicParsing="false" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <JFXListView layoutX="14.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@/vehicleManagement/ui/styles/styles.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="14.0" />
+      <JFXButton layoutX="434.0" layoutY="219.0" mnemonicParsing="false" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Serach" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <VBox layoutX="386.0" layoutY="14.0" prefHeight="242.0" prefWidth="134.0" spacing="8.0" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <JFXTextField promptText="Customer Name">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXDatePicker defaultColor="#004f8f" promptText="Rental Date" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

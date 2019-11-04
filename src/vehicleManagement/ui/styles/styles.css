@@ -15,13 +15,13 @@
 }
 
 .main-pane {
-    -fx-background-color: rgb(150, 150, 150);
+    -fx-background-color: rgb(199, 199, 199);
 }
 
 .regular-button {
     -fx-background-color: rgb(4, 57, 91);
     -fx-text-fill: white;
-    -jfx-button-type: RAISED;
+    -jfx-button-type: FLAT;
 }
 
 /*******************************************************************************

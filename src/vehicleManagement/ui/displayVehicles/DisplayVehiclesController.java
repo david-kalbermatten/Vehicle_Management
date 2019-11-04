@@ -14,14 +14,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class displayVehiclesController implements Initializable {
+public class DisplayVehiclesController implements Initializable {
     //Data
     private VehicleService vehicleService = Main.vService;
     private List<Vehicle> vehicles = vehicleService.vehicleList;
 
     //UI
     @FXML JFXButton testButton;
-    @FXML MainScreenController mainScreenController;
+    MainScreenController mainScreenController;
 
     public void testAction() {
         System.out.println("Vehicle Button");

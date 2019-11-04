@@ -2,6 +2,7 @@ package vehicleManagement.ui.main;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,21 +22,19 @@ import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
     @FXML BorderPane rootElement;
-    @FXML JFXButton menuButton1;
+    @FXML JFXButton displayVehicles;
     @FXML VBox sideMenu;
 
     private JFXSnackbar snackbar;
     private BorderPane snackBarContainer;
     private Text snackBarText;
 
-
-    public void menuAction(int numberOfMenuItem) {
-        snackBarText.setText("I'm the Text Number " + numberOfMenuItem);
-        snackbar.enqueue(new JFXSnackbar.SnackbarEvent(snackBarContainer, Duration.seconds(4)));
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        defineSnackBar();
     }
 
-    public void menuDisplayVehicles() {
-        menuAction(1);
+    public void changeViewDisplayVehicles() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../displayVehicles/displayVehicles.fxml"));
             rootElement.setCenter(root);
@@ -44,8 +43,7 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    public void menuAction2() {
-        menuAction(2);
+    public void changeViewDisplayRentals() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../displayRentals/displayRentals.fxml"));
             rootElement.setCenter(root);
@@ -54,18 +52,22 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    public void menuAction3() {
-        menuAction(3);
+    public void changeViewRegisterVehicle() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../registerVehicle/registerVehicle.fxml"));
+            rootElement.setCenter(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void testFunction() {
-        menuButton1.setText("Yeet");
+    public void changeViewRegisterRental() {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        defineSnackBar();
+    public void showSnackBar(int numberOfMenuItem) {
+        snackBarText.setText("I'm the Text Number " + numberOfMenuItem);
+        snackbar.enqueue(new JFXSnackbar.SnackbarEvent(snackBarContainer, Duration.seconds(4)));
     }
 
     private void defineSnackBar() {
@@ -87,4 +89,6 @@ public class MainScreenController implements Initializable {
     public void closeProgram() {
         System.exit(0);
     }
+
+
 }

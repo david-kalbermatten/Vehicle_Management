@@ -8,7 +8,7 @@ import vehicleManagement.services.RentalService;
 
 import java.util.List;
 
-public class displayRentalsController {
+public class DisplayRentalsController {
     //Data
     private RentalService rentalService = Main.rService;
     private List<Rental> rentals = rentalService.rentalList;

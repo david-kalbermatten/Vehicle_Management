@@ -7,19 +7,25 @@
 <BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.main.MainScreenController">
    <left>
       <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER">
-         <JFXButton fx:id="menuButton1" alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuDisplayVehicles" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 1">
+         <JFXButton fx:id="displayVehicles" alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#changeViewDisplayVehicles" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Display Vehicles">
             <styleClass>
                <String fx:value="side-menu" />
                <String fx:value="menu-item" />
             </styleClass>
          </JFXButton>
-         <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuAction2" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 2">
+         <JFXButton fx:id="addVehicle" alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#changeViewRegisterVehicle" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Add Vehicle">
             <styleClass>
                <String fx:value="side-menu" />
                <String fx:value="menu-item" />
             </styleClass>
          </JFXButton>
-         <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#menuAction3" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Menu Item 3">
+         <JFXButton fx:id="displayRentals" alignment="BASELINE_LEFT" contentDisplay="CENTER" onAction="#changeViewDisplayRentals" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Display Rentals">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton fx:id="addRental" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="90.0" onAction="#changeViewRegisterRental" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Add Rental">
             <styleClass>
                <String fx:value="side-menu" />
                <String fx:value="menu-item" />
@@ -28,6 +34,6 @@
       </VBox>
    </left>
    <center>
-      <BorderPane fx:id="rootElement" prefHeight="300.0" prefWidth="400.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="rootElement" prefHeight="450.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

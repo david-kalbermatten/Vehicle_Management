@@ -34,14 +34,14 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         defineSnackBar();
-        sideMenu.getChildren().forEach(menuItem -> {
+        /*sideMenu.getChildren().forEach(menuItem -> {
             JFXButton item = ((JFXButton) menuItem);
             ImageView image = new ImageView("/vehicleManagement/resources/baseline_directions_car_white_48dp.png");
             image.setFitWidth(24);
             image.setFitHeight(24);
             item.setGraphic(image);
             //item.setGraphicTextGap(20);
-        });
+        });*/
     }
 
     public void changeViewDisplayVehicles() {

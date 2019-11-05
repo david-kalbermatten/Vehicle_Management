@@ -9,7 +9,7 @@ public class Vehicle {
     protected int ccm;
     protected FuelType fuelType;
     protected String exteriorColor;
-    protected String millage;
+    protected int millage;
     protected String licensePlate;
     protected int numberOfSeats;
     protected VehicleCategory vehicleCategory;

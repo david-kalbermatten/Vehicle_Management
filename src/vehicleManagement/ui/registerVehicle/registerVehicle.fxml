@@ -4,29 +4,31 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="730.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerVehicle.RegisterVehicle">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="730.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerVehicle.RegisterVehicle">
    <children>
-      <BorderPane fx:id="subView" layoutX="501.0" layoutY="62.0" prefWidth="215.0" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="62.0" />
-      <JFXButton layoutX="673.0" layoutY="292.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <FlowPane hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" vgap="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="262.0" AnchorPane.topAnchor="20.0">
+      <BorderPane fx:id="subView" layoutX="501.0" layoutY="62.0" prefWidth="215.0" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="66.0" />
+      <JFXButton layoutX="673.0" layoutY="292.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="105.0" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <FlowPane hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" vgap="24.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="262.0" AnchorPane.topAnchor="24.0">
          <children>
-            <JFXTextField labelFloat="true" promptText="Vehicle ID">
+            <JFXTextField fx:id="idNumber" promptText="Vehicle ID" styleClass="input-field" stylesheets="@../styles/styles.css">
                <FlowPane.margin>
                   <Insets />
                </FlowPane.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="Make" />
-            <JFXTextField labelFloat="true" promptText="Model" />
-            <JFXTextField labelFloat="true" promptText="ccm" />
-            <JFXTextField labelFloat="true" promptText="Model" />
-            <JFXComboBox fx:id="fuelType" labelFloat="true" prefWidth="200.0" promptText="Fuel Type" />
-            <JFXTextField labelFloat="true" promptText="Exterior Color" />
-            <JFXTextField labelFloat="true" promptText="Millage in [km]" />
-            <JFXTextField labelFloat="true" promptText="License Plate" />
-            <JFXTextField labelFloat="true" promptText="Number of Seats" />
-            <JFXComboBox fx:id="vehicleCategory" labelFloat="true" prefWidth="215.0" promptText="Vehicle Category" />
-            <JFXDatePicker defaultColor="#00528f" minHeight="-Infinity" overLay="true" prefWidth="215.0" promptText="Date of Purchase" />
-            <JFXTextField labelFloat="true" promptText="Price of Purchase in [CHF]" />
+            <JFXTextField fx:id="make" promptText="Make" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="model" promptText="Model" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="ccm" promptText="ccm" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXComboBox fx:id="fuelType" promptText="Fuel Type" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="exteriorColor" promptText="Exterior Color" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="millage" promptText="Millage in [km]" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="licensePlate" promptText="License Plate" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="numberOfSeats" promptText="Number of Seats" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXComboBox fx:id="vehicleCategory" promptText="Vehicle Category" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXDatePicker fx:id="dateOfPurchase" promptText="Date of Purchase" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="priceOfPurchase" promptText="Price of Purchase in [CHF]" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXDatePicker fx:id="availableFrom" promptText="Available from" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXDatePicker fx:id="availableUntil" promptText="Available until" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXCheckBox fx:id="availability" mnemonicParsing="false" styleClass="input-field" stylesheets="@../styles/styles.css" text="Available" />
          </children></FlowPane>
-      <JFXComboBox fx:id="vehicleType" layoutX="478.0" layoutY="20.0" onAction="#selectVehicleType" prefWidth="215.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
+      <JFXComboBox fx:id="vehicleType" layoutX="478.0" layoutY="20.0" onAction="#selectVehicleType" prefWidth="215.0" promptText="Vehicle Type" styleClass="input-field" stylesheets="@../styles/styles.css" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="24.0" />
    </children>
 </AnchorPane>

@@ -20,9 +20,23 @@
 }
 
 .regular-button {
-    -fx-background-color: rgb(4, 57, 91);
+    -fx-background-color: rgb(4, 69, 104);
     -fx-text-fill: white;
     -jfx-button-type: FLAT;
+}
+
+.input-field {
+    -fx-min-width: 215;
+    -fx-pref-width: 215;
+    -fx-max-width: 215;
+    -jfx-focus-color: rgb(4, 69, 104);
+    -jfx-default-color: rgb(4, 69, 104);
+    -jfx-checked-color: rgb(4, 69, 104);
+    -jfx-label-float: true;
+}
+
+.jfx-date-picker > .jfx-text-field {
+    -jfx-label-float: true;
 }
 
 /*******************************************************************************

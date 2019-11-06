@@ -17,12 +17,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import vehicleManagement.Main;
+import vehicleManagement.data.vehicle.Vehicle;
+import vehicleManagement.services.RentalService;
+import vehicleManagement.services.VehicleService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
+    VehicleService vehicleService = Main.vService;
+    RentalService rentalService = Main.rService;
+
     @FXML BorderPane rootElement;
     @FXML JFXButton displayVehicles;
     @FXML VBox sideMenu;
@@ -64,6 +71,8 @@ public class MainScreenController implements Initializable {
 
     public void changeViewRegisterVehicle() {
         try {
+            Main.inEditMode = false;
+            Main.vehicleToEdit = null;
             Parent root = FXMLLoader.load(getClass().getResource("../registerVehicle/registerVehicle.fxml"));
             rootElement.setCenter(root);
         } catch (IOException e) {

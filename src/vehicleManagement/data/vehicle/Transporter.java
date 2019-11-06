@@ -1,6 +1,6 @@
 package vehicleManagement.data.vehicle;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Transporter extends Vehicle {
     protected double heightInCm;
@@ -8,13 +8,17 @@ public class Transporter extends Vehicle {
 
     public Transporter() {}
 
-    public Transporter(Vehicle vehicle, double heightInCm, double loadingWeightInKG) {
+    public Transporter(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);
+    }
+
+    public Transporter(Vehicle vehicle, double heightInCm, double loadingWeightInKG) {
+        this(vehicle);
         this.heightInCm = heightInCm;
         this.loadingWeightInKG = loadingWeightInKG;
     }
 
-    public Transporter(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, Date dateOfPurchase, Double priceOfPurchase, Date availableFrom, Date availableUntil, boolean availability, double heightInCm, double loadingWeightInKG) {
+    public Transporter(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, LocalDate dateOfPurchase, Double priceOfPurchase, LocalDate availableFrom, LocalDate availableUntil, boolean availability, double heightInCm, double loadingWeightInKG) {
         super(idNumber, make, model, ccm, fuelType, exteriorColor, millage, licensePlate, numberOfSeats, vehicleCategory, dateOfPurchase, priceOfPurchase, availableFrom, availableUntil, availability);
         this.heightInCm = heightInCm;
         this.loadingWeightInKG = loadingWeightInKG;

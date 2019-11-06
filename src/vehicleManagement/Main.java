@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vehicleManagement.data.vehicle.Vehicle;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.VehicleService;
 
 public class Main extends Application {
     public static VehicleService vService;
     public static RentalService rService;
+    public static boolean inEditMode;
+    public static Vehicle vehicleToEdit;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

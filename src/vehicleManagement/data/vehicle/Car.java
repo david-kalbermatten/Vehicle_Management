@@ -1,6 +1,6 @@
 package vehicleManagement.data.vehicle;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Car extends Vehicle {
     protected int trunkSpace;
@@ -9,14 +9,18 @@ public class Car extends Vehicle {
 
     public Car() {}
 
-    public Car(Vehicle vehicle, int trunkSpace, CarType carType, boolean hasSatNav) {
+    public Car(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);
+    }
+
+    public Car(Vehicle vehicle, int trunkSpace, CarType carType, boolean hasSatNav) {
+        this(vehicle);
         this.trunkSpace = trunkSpace;
         this.carType = carType;
         this.hasSatNav = hasSatNav;
     }
 
-    public Car(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, Date dateOfPurchase, Double priceOfPurchase, Date availableFrom, Date availableUntil, boolean availability, int trunkSpace, CarType carType, boolean hasSatNav) {
+    public Car(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, LocalDate dateOfPurchase, Double priceOfPurchase, LocalDate availableFrom, LocalDate availableUntil, boolean availability, int trunkSpace, CarType carType, boolean hasSatNav) {
         super(idNumber, make, model, ccm, fuelType, exteriorColor, millage, licensePlate, numberOfSeats, vehicleCategory, dateOfPurchase, priceOfPurchase, availableFrom, availableUntil, availability);
         this.trunkSpace = trunkSpace;
         this.carType = carType;

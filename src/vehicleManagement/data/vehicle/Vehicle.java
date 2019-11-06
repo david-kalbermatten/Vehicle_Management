@@ -1,6 +1,6 @@
 package vehicleManagement.data.vehicle;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Vehicle {
     protected String idNumber;
@@ -13,15 +13,15 @@ public class Vehicle {
     protected String licensePlate;
     protected int numberOfSeats;
     protected VehicleCategory vehicleCategory;
-    protected Date dateOfPurchase;
+    protected LocalDate dateOfPurchase;
     protected Double priceOfPurchase;
-    protected Date availableFrom;
-    protected Date availableUntil;
+    protected LocalDate availableFrom;
+    protected LocalDate availableUntil;
     protected boolean availability;
 
     public Vehicle() { }
 
-    public Vehicle(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, Date dateOfPurchase, Double priceOfPurchase, Date availableFrom, Date availableUntil, boolean availability) {
+    public Vehicle(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, LocalDate dateOfPurchase, Double priceOfPurchase, LocalDate availableFrom, LocalDate availableUntil, boolean availability) {
         this.idNumber = idNumber;
         this.make = make;
         this.model = model;
@@ -119,11 +119,11 @@ public class Vehicle {
         this.vehicleCategory = vehicleCategory;
     }
 
-    public Date getDateOfPurchase() {
+    public LocalDate getDateOfPurchase() {
         return dateOfPurchase;
     }
 
-    public void setDateOfPurchase(Date dateOfPurchase) {
+    public void setDateOfPurchase(LocalDate dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
 
@@ -135,19 +135,19 @@ public class Vehicle {
         this.priceOfPurchase = priceOfPurchase;
     }
 
-    public Date getAvailableFrom() {
+    public LocalDate getAvailableFrom() {
         return availableFrom;
     }
 
-    public void setAvailableFrom(Date availableFrom) {
+    public void setAvailableFrom(LocalDate availableFrom) {
         this.availableFrom = availableFrom;
     }
 
-    public Date getAvailableUntil() {
+    public LocalDate getAvailableUntil() {
         return availableUntil;
     }
 
-    public void setAvailableUntil(Date availableUntil) {
+    public void setAvailableUntil(LocalDate availableUntil) {
         this.availableUntil = availableUntil;
     }
 

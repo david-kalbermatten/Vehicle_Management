@@ -18,14 +18,17 @@ import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class RegisterVehicle implements Initializable {
     public AnchorPane root;
     private VehicleService vehicleService = Main.vService;
+    private ArrayList inputFieldList;
 
     public BorderPane subView;
     public JFXTextField idNumber;
@@ -64,6 +67,7 @@ public class RegisterVehicle implements Initializable {
         fuelType.getItems().setAll(FuelType.values());
         vehicleCategory.getItems().setAll(VehicleCategory.values());
         vehicleType.getItems().setAll(VehicleTypes.values());
+        generateInputFieldList();
 
         //InputField Validation
         ValidatorService.setInputFieldToInteger(ccm);
@@ -75,42 +79,64 @@ public class RegisterVehicle implements Initializable {
     public void confirm() {
         if(isAllSet()) {
             System.out.println("Works! :D");
+
         } else {
             ValidatorService.showSnackbar("Not all fields have been set!", root);
         }
     }
 
     private boolean isAllSet() {
-        if(idNumber.getText().isEmpty()) return false;
-        if(make.getText().isEmpty()) return false;
-        if(model.getText().isEmpty()) return false;
-        if(ccm.getText().isEmpty()) return false;
-        if(exteriorColor.getText().isEmpty()) return false;
-        if(millage.getText().isEmpty()) return false;
-        if(licensePlate.getText().isEmpty()) return false;
-        if(numberOfSeats.getText().isEmpty()) return false;
-        if(dateOfPurchase.getValue() == null) return false;
-        if(priceOfPurchase.getText().isEmpty()) return false;
-        if(availableFrom.getValue() == null) return false;
-        if(availableUntil.getValue() == null) return false;
-        if(fuelType.getValue() == null) return false;
-        if(vehicleType.getValue() == null) return false;
-        if(vehicleCategory.getValue() == null) return false;
-
-        switch (vehicleType.getValue()) {
-            case CAR:
-                if(trunkSpace.getText().isEmpty()) return false;
-                if(carType.getValue() == null) return false;
-                break;
-            case MOTORCYCLE:
-                if(fuelCapacity.getText().isEmpty()) return false;
-                break;
-            case TRANSPORTER:
-                if(loadingWeightInKG.getText().isEmpty()) return false;
-                if(heightInCm.getText().isEmpty()) return false;
-                break;
+        ArrayList list = (ArrayList) inputFieldList.clone();
+        if(vehicleType.getValue() != null) {
+            switch (vehicleType.getValue()) {
+                case CAR:
+                    list.add(trunkSpace);
+                    list.add(carType);
+                    break;
+                case MOTORCYCLE:
+                    list.add(fuelCapacity);
+                    break;
+                case TRANSPORTER:
+                    list.add(loadingWeightInKG);
+                    list.add(heightInCm);
+                    break;
+            }
+            for (Object input : list) {
+                if(input instanceof JFXTextField) {
+                    if(((JFXTextField) input).getText().isEmpty()) return false;
+                } else if(input instanceof JFXDatePicker) {
+                    if(((JFXDatePicker) input).getValue() == null) return false;
+                } else if(input instanceof JFXComboBox) {
+                    if(((JFXComboBox) input).getValue() == null) return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
         }
-        return true;
+    }
+
+    private void generateInputFieldList() {
+        inputFieldList = new ArrayList(
+            Arrays.asList(
+                idNumber,
+                make,
+                model,
+                ccm,
+                exteriorColor,
+                millage,
+                licensePlate,
+                numberOfSeats,
+                dateOfPurchase,
+                priceOfPurchase,
+                availableFrom,
+                availableUntil,
+                fuelType,
+                vehicleType,
+                vehicleCategory
+            )
+        );
+        
     }
 
     public void selectVehicleType(ActionEvent actionEvent) {

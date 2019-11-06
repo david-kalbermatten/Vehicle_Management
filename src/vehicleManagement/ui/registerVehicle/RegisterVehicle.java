@@ -77,7 +77,6 @@ public class RegisterVehicle implements Initializable {
 
     public void confirm() {
         if(isAllSet()) {
-            System.out.println("Works! :D");
             saveVehicle(vehicleType.getValue());
         } else {
             ValidatorService.showSnackbar("Not all fields have been set!", root);

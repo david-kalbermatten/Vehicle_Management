@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import vehicleManagement.Main;
+import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.Vehicle;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.ui.main.MainScreenController;
@@ -16,8 +16,7 @@ import java.util.ResourceBundle;
 
 public class DisplayVehiclesController implements Initializable {
     //Data
-    private VehicleService vehicleService = Main.vService;
-    private List<Vehicle> vehicles = vehicleService.vehicleList;
+    private VehicleService vehicleService = GlobalVars.vService;
 
     //UI
     @FXML JFXButton testButton;

@@ -2,7 +2,7 @@ package vehicleManagement.ui.displayRentals;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import vehicleManagement.Main;
+import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.services.RentalService;
 
@@ -10,8 +10,7 @@ import java.util.List;
 
 public class DisplayRentalsController {
     //Data
-    private RentalService rentalService = Main.rService;
-    private List<Rental> rentals = rentalService.rentalList;
+    private RentalService rentalService = GlobalVars.rService;
 
     //UI
     @FXML JFXButton testButton;

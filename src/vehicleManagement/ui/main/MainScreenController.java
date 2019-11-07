@@ -2,23 +2,19 @@ package vehicleManagement.ui.main;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import vehicleManagement.Main;
-import vehicleManagement.data.vehicle.Vehicle;
+import vehicleManagement.GlobalVars;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.VehicleService;
 
@@ -27,8 +23,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
-    VehicleService vehicleService = Main.vService;
-    RentalService rentalService = Main.rService;
+    VehicleService vehicleService = GlobalVars.vService;
+    RentalService rentalService = GlobalVars.rService;
 
     @FXML BorderPane rootElement;
     @FXML JFXButton displayVehicles;
@@ -71,8 +67,8 @@ public class MainScreenController implements Initializable {
 
     public void changeViewRegisterVehicle() {
         try {
-            Main.inEditMode = false;
-            Main.vehicleToEdit = null;
+            GlobalVars.inEditMode = false;
+            GlobalVars.vehicleToEdit = null;
             Parent root = FXMLLoader.load(getClass().getResource("../registerVehicle/registerVehicle.fxml"));
             rootElement.setCenter(root);
         } catch (IOException e) {

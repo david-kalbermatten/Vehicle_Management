@@ -1,19 +1,13 @@
 package vehicleManagement.services;
 
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import vehicleManagement.Main;
+import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.Car;
 import vehicleManagement.data.vehicle.Motorcycle;
 import vehicleManagement.data.vehicle.Transporter;
 import vehicleManagement.data.vehicle.Vehicle;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class VehicleService {
     public ObservableList<Vehicle> vehicleList = FXCollections.observableArrayList();
@@ -22,14 +16,14 @@ public class VehicleService {
         vehicleList.addListener(new ListChangeListener<Vehicle>() {
             @Override
             public void onChanged(Change<? extends Vehicle> c) {
-                Main.pService.update();
+                GlobalVars.pService.update();
             }
         });
     }
 
     public void addVehicle(Vehicle vehicleToAdd) {
         vehicleList.add(vehicleToAdd);
-        Main.inEditMode = false;
+        GlobalVars.inEditMode = false;
     }
 
     public void removeVehicle(Vehicle vehicleToRemove) {

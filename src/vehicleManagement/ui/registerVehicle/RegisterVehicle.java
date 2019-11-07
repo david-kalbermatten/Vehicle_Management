@@ -7,7 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import vehicleManagement.Main;
+
+import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class RegisterVehicle implements Initializable {
-    private VehicleService vehicleService = Main.vService;
+    private VehicleService vehicleService = GlobalVars.vService;
     private List<Control> inputFieldList;
 
     //UI Elements
@@ -66,7 +67,7 @@ public class RegisterVehicle implements Initializable {
         vehicleCategory.getItems().setAll(VehicleCategory.values());
         vehicleType.getItems().setAll(VehicleTypes.values());
         initializeInputFieldList();
-        initializeUI(Main.inEditMode);
+        initializeUI(GlobalVars.inEditMode);
 
         //InputField Validation
         ValidatorService.setInputFieldToInteger(ccm);
@@ -120,8 +121,8 @@ public class RegisterVehicle implements Initializable {
                 break;
         }
 
-        if(Main.inEditMode) {
-            vehicleService.updateVehicle(Main.vehicleToEdit, tmpVehicle);
+        if(GlobalVars.inEditMode) {
+            vehicleService.updateVehicle(GlobalVars.vehicleToEdit, tmpVehicle);
         } else {
             vehicleService.addVehicle(tmpVehicle);
         }
@@ -168,7 +169,7 @@ public class RegisterVehicle implements Initializable {
         }
 
         if(isInEditMode) {
-            Vehicle vehicleToEdit = Main.vehicleToEdit;
+            Vehicle vehicleToEdit = GlobalVars.vehicleToEdit;
             if(vehicleToEdit instanceof Car) vehicleType.setValue(VehicleTypes.CAR);
             if(vehicleToEdit instanceof Motorcycle) vehicleType.setValue(VehicleTypes.MOTORCYCLE);
             if(vehicleToEdit instanceof Transporter) vehicleType.setValue(VehicleTypes.TRANSPORTER);

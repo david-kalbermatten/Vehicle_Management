@@ -68,6 +68,7 @@ public class ValidatorService {
         };
         TextFormatter<Double> textFormatter = new TextFormatter<>(converter, 0.0, filter);
         textField.setTextFormatter(textFormatter);
+        textField.setText("");
     }
 
     public static void showSnackbar(String message, Pane rootElement) {

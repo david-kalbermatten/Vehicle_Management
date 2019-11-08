@@ -24,7 +24,7 @@
             <JFXTextField fx:id="numberOfSeats" promptText="Number of Seats" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXComboBox fx:id="vehicleCategory" promptText="Vehicle Category" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXDatePicker fx:id="dateOfPurchase" promptText="Date of Purchase" styleClass="input-field" stylesheets="@../styles/styles.css" />
-            <JFXTextField fx:id="priceOfPurchase" promptText="Price of Purchase in [CHF]" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="priceOfPurchase" labelFloat="true" promptText="Price of Purchase in [CHF]" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXDatePicker fx:id="availableFrom" promptText="Available from" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXDatePicker fx:id="availableUntil" promptText="Available until" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXCheckBox fx:id="availability" mnemonicParsing="false" styleClass="input-field" stylesheets="@../styles/styles.css" text="Available" />

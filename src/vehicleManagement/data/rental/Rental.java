@@ -2,6 +2,7 @@ package vehicleManagement.data.rental;
 
 import vehicleManagement.data.vehicle.Vehicle;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Rental {
@@ -13,19 +14,19 @@ public class Rental {
         this.vehicle = vehicle;
     }
 
-    public Date getRentedFrom() {
+    public LocalDate getRentedFrom() {
         return rentedFrom;
     }
 
-    public void setRentedFrom(Date rentedFrom) {
+    public void setRentedFrom(LocalDate rentedFrom) {
         this.rentedFrom = rentedFrom;
     }
 
-    public Date getRentedUntil() {
+    public LocalDate getRentedUntil() {
         return rentedUntil;
     }
 
-    public void setRentedUntil(Date rentedUntil) {
+    public void setRentedUntil(LocalDate rentedUntil) {
         this.rentedUntil = rentedUntil;
     }
 
@@ -101,11 +102,11 @@ public class Rental {
         this.customerEmail = customerEmail;
     }
 
-    public Date getCustomerBirthday() {
+    public LocalDate getCustomerBirthday() {
         return customerBirthday;
     }
 
-    public void setCustomerBirthday(Date customerBirthday) {
+    public void setCustomerBirthday(LocalDate customerBirthday) {
         this.customerBirthday = customerBirthday;
     }
 
@@ -119,9 +120,9 @@ public class Rental {
 
     //Rental values
     private Vehicle vehicle;
-    private Date rentedFrom;
-    private Date rentedUntil;
-    private double rentalPrice;
+    private LocalDate rentedFrom;
+    private LocalDate rentedUntil;
+    private Double rentalPrice;
     private RentalStatus status;
 
     //Customer Values
@@ -132,7 +133,7 @@ public class Rental {
     private String customerArea;
     private String customerPhone;
     private String customerEmail;
-    private Date customerBirthday;
+    private LocalDate customerBirthday;
     private String customerLicenseID;
 
 }

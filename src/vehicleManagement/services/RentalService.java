@@ -2,6 +2,7 @@ package vehicleManagement.services;
 
 import vehicleManagement.data.rental.Rental;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +31,7 @@ public class RentalService {
         return resultList;
     }
 
-    public List<Rental> searchByRentalDate(Date date) {
+    public List<Rental> searchByRentalDate(LocalDate date) {
         List<Rental> resultList = new ArrayList<>(rentalList);
         List<Rental> toRemove = new ArrayList<>();
         rentalList.forEach(rental -> {

@@ -13,7 +13,6 @@
     -fx-text-fill: WHITE;
     -fx-background-radius: 0;
     -jfx-disable-visual-focus: true;
-    -jfx-label-float: true;
 }
 
 .main-pane {
@@ -33,7 +32,14 @@
     -jfx-focus-color: rgb(4, 69, 104);
     -jfx-default-color: rgb(4, 69, 104);
     -jfx-checked-color: rgb(4, 69, 104);
+    -jfx-label-float: true;
+}
 
+.input-field-color {
+    -jfx-focus-color: rgb(4, 69, 104);
+    -jfx-default-color: rgb(4, 69, 104);
+    -jfx-checked-color: rgb(4, 69, 104);
+    -jfx-label-float: true;
 }
 
 .jfx-date-picker > .jfx-text-field {

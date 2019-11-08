@@ -67,7 +67,7 @@ public class RegisterVehicle implements Initializable {
         vehicleCategory.getItems().setAll(VehicleCategory.values());
         vehicleType.getItems().setAll(VehicleTypes.values());
         initializeInputFieldList();
-        initializeUI(GlobalVars.inEditMode);
+        initializeUI(GlobalVars.inVehicleEditMode);
 
         //InputField Validation
         ValidatorService.setInputFieldToInteger(ccm);
@@ -79,6 +79,7 @@ public class RegisterVehicle implements Initializable {
     public void confirm() {
         if(isAllSet()) {
             saveVehicle(vehicleType.getValue());
+            ValidatorService.showSnackbar("Successfully Saved Vehicle", root);
         } else {
             ValidatorService.showSnackbar("Not all fields have been set!", root);
         }
@@ -121,7 +122,7 @@ public class RegisterVehicle implements Initializable {
                 break;
         }
 
-        if(GlobalVars.inEditMode) {
+        if(GlobalVars.inVehicleEditMode) {
             vehicleService.updateVehicle(GlobalVars.vehicleToEdit, tmpVehicle);
         } else {
             vehicleService.addVehicle(tmpVehicle);

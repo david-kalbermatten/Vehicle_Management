@@ -6,6 +6,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Rental {
+    public Rental() {
+
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
@@ -30,11 +34,11 @@ public class Rental {
         this.rentedUntil = rentedUntil;
     }
 
-    public double getRentalPrice() {
+    public Double getRentalPrice() {
         return rentalPrice;
     }
 
-    public void setRentalPrice(double rentalPrice) {
+    public void setRentalPrice(Double rentalPrice) {
         this.rentalPrice = rentalPrice;
     }
 

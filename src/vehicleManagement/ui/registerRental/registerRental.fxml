@@ -5,8 +5,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
    <children>
+      <HBox layoutX="265.0" layoutY="14.0" prefHeight="40.0" spacing="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <JFXComboBox fx:id="vehicleType" prefWidth="150.0" />
+            <JFXTextField styleClass="input-field" stylesheets="@../styles/styles.css" />
+         </children></HBox>
+      <JFXTreeTableView fx:id="vehicleTable" layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="472.0" AnchorPane.topAnchor="68.0" />
+      <VBox layoutX="581.0" layoutY="78.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="68.0">
+         <children>
+            <Label text="Customer Information" underline="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="surname" promptText="Surname" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="name" promptText="Name" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="street" promptText="Street &amp; Number" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <HBox spacing="14.0">
+               <children>
+                  <JFXTextField fx:id="plz" prefWidth="55.0" promptText="PLZ" styleClass="input-field-color" stylesheets="@../styles/styles.css" />
+                  <JFXTextField fx:id="area" prefWidth="146.0" promptText="City" styleClass="input-field-color" stylesheets="@../styles/styles.css" />
+               </children>
+            </HBox>
+            <JFXTextField fx:id="phone" promptText="Phone Number" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="email" promptText="E-Mail Address" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXDatePicker fx:id="birthday" promptText="Birthday" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="licenseId" promptText="License ID" styleClass="input-field" stylesheets="@../styles/styles.css" />
+         </children>
+      </VBox>
       <VBox layoutX="486.0" layoutY="14.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="68.0">
          <children>
             <Label text="Rental Information" underline="true">
@@ -16,25 +44,9 @@
             </Label>
             <JFXDatePicker fx:id="rentedFrom" promptText="Rented from" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXDatePicker fx:id="rentedUntil" promptText="Rented until" styleClass="input-field" stylesheets="@../styles/styles.css" />
-            <JFXTextField fx:id="rentalPrice" labelFloat="true" promptText="Rental Price" styleClass="input-field" stylesheets="@../styles/styles.css" />
+            <JFXTextField fx:id="rentalPrice" promptText="Rental Price" styleClass="input-field" stylesheets="@../styles/styles.css" />
             <JFXComboBox fx:id="rentalStatus" prefWidth="150.0" promptText="Rental Status" styleClass="input-field" stylesheets="@../styles/styles.css" />
          </children></VBox>
-      <JFXTreeTableView layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="472.0" AnchorPane.topAnchor="68.0" />
-      <VBox layoutX="581.0" layoutY="78.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="68.0">
-         <children>
-            <Label text="Customer Information" underline="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <JFXTextField promptText="Surname" styleClass="input-field" stylesheets="@../styles/styles.css" />
-            <JFXTextField layoutX="10.0" layoutY="49.0" promptText="Name" styleClass="input-field" stylesheets="@../styles/styles.css" />
-         </children>
-      </VBox>
-      <HBox layoutX="265.0" layoutY="14.0" prefHeight="40.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-         <children>
-            <JFXTextField styleClass="input-field" stylesheets="@../styles/styles.css" />
-         </children></HBox>
-      <JFXButton layoutX="720.0" layoutY="460.0" mnemonicParsing="false" styleClass="regular-button" stylesheets="@../styles/styles.css" text="Register Rental" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <JFXButton fx:id="confirmButton" layoutX="720.0" layoutY="460.0" mnemonicParsing="false" onAction="#confirm" styleClass="regular-button" stylesheets="@../styles/styles.css" text="Register Rental" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

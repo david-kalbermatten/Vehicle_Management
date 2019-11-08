@@ -43,4 +43,10 @@ public class RentalService {
         resultList.removeAll(toRemove);
         return resultList;
     }
+
+    public void updateRental(Rental oldRental, Rental newRental) {
+        rentalList.set(rentalList.indexOf(oldRental), newRental);
+    }
+
+
 }

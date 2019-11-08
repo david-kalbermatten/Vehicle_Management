@@ -67,7 +67,7 @@ public class MainScreenController implements Initializable {
 
     public void changeViewRegisterVehicle() {
         try {
-            GlobalVars.inEditMode = false;
+            GlobalVars.inVehicleEditMode = false;
             GlobalVars.vehicleToEdit = null;
             Parent root = FXMLLoader.load(getClass().getResource("../registerVehicle/registerVehicle.fxml"));
             rootElement.setCenter(root);
@@ -78,6 +78,8 @@ public class MainScreenController implements Initializable {
 
     public void changeViewRegisterRental() {
         try {
+            GlobalVars.inRentalEditMode = false;
+            GlobalVars.rentalToEdit = null;
             Parent root = FXMLLoader.load(getClass().getResource("../registerRental/registerRental.fxml"));
             rootElement.setCenter(root);
         } catch (IOException e) {

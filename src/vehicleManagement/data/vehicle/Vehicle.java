@@ -1,8 +1,10 @@
 package vehicleManagement.data.vehicle;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import java.time.LocalDate;
 
-public class Vehicle {
+public class Vehicle extends RecursiveTreeObject<Vehicle> {
     protected String idNumber;
     protected String make;
     protected String model;

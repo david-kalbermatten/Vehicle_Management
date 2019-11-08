@@ -23,7 +23,7 @@ public class VehicleService {
 
     public void addVehicle(Vehicle vehicleToAdd) {
         vehicleList.add(vehicleToAdd);
-        GlobalVars.inEditMode = false;
+        GlobalVars.inVehicleEditMode = false;
     }
 
     public void removeVehicle(Vehicle vehicleToRemove) {

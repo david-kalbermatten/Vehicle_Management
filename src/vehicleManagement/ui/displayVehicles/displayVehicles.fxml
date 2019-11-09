@@ -3,8 +3,20 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehiclesController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="700.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehicles">
    <children>
-      <JFXButton fx:id="testButton" buttonType="RAISED" layoutX="137.0" layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#testAction" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Button" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <JFXTreeTableView fx:id="vehicleTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="14.0" />
+      <VBox layoutX="386.0" layoutY="14.0" prefHeight="242.0" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <BorderPane>
+               <right>
+                  <JFXButton mnemonicParsing="false" styleClass="regular-button" text="Reset Filters" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+            <JFXComboBox fx:id="vehicleType" prefWidth="150.0" promptText="Vehicle Type" styleClass="input-field" />
+            <JFXTextField fx:id="make" promptText="Make" styleClass="input-field" />
+         </children>
+      </VBox>
+      <JFXButton layoutX="434.0" layoutY="219.0" mnemonicParsing="false" styleClass="regular-button" text="Edit Selected Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

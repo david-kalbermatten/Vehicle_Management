@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.main.MainScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.mainScreen.MainScreenController">
    <left>
       <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER">
          <JFXButton fx:id="displayVehicles" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewDisplayVehicles" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Display Vehicles">
@@ -13,13 +13,13 @@
                <String fx:value="menu-item" />
             </styleClass>
          </JFXButton>
-         <JFXButton fx:id="addVehicle" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewRegisterVehicle" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle">
+         <JFXButton fx:id="displayRentals" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewDisplayRentals" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Display Rentals">
             <styleClass>
                <String fx:value="side-menu" />
                <String fx:value="menu-item" />
             </styleClass>
          </JFXButton>
-         <JFXButton fx:id="displayRentals" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewDisplayRentals" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Display Rentals">
+         <JFXButton fx:id="addVehicle" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewRegisterVehicle" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle">
             <styleClass>
                <String fx:value="side-menu" />
                <String fx:value="menu-item" />
@@ -34,6 +34,6 @@
       </VBox>
    </left>
    <center>
-      <BorderPane fx:id="rootElement" prefHeight="450.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="rootElement" prefHeight="410.0" prefWidth="735.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

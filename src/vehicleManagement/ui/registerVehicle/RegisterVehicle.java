@@ -8,6 +8,7 @@ import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import javafx.stage.Stage;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.ValidatorService;
@@ -68,6 +69,8 @@ public class RegisterVehicle implements Initializable {
         vehicleType.getItems().setAll(VehicleTypes.values());
         initializeInputFieldList();
         initializeUI(GlobalVars.inVehicleEditMode);
+
+        GlobalVars.resizeStage(root);
 
         //InputField Validation
         ValidatorService.setInputFieldToInteger(ccm);
@@ -264,5 +267,3 @@ public class RegisterVehicle implements Initializable {
         }
     }
 }
-
-

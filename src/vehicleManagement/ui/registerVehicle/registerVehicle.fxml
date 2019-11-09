@@ -4,10 +4,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="730.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerVehicle.RegisterVehicle">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="410.0" minWidth="735.0" prefHeight="410.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerVehicle.RegisterVehicle">
    <children>
       <BorderPane fx:id="subView" layoutX="501.0" layoutY="62.0" prefWidth="215.0" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="66.0" />
-      <JFXButton fx:id="confirmButton" layoutX="673.0" layoutY="292.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="105.0" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <JFXButton fx:id="confirmButton" layoutX="673.0" layoutY="292.0" mnemonicParsing="false" onAction="#confirm" styleClass="regular-button" stylesheets="@/vehicleManagement/ui/styles/styles.css" text="Register Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <FlowPane hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" vgap="24.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="262.0" AnchorPane.topAnchor="24.0">
          <children>
             <JFXTextField fx:id="idNumber" promptText="Vehicle ID" styleClass="input-field" stylesheets="@../styles/styles.css">

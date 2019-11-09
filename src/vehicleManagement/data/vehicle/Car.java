@@ -7,10 +7,13 @@ public class Car extends Vehicle {
     protected CarType carType;
     protected boolean hasSatNav;
 
-    public Car() {}
+    public Car() {
+        super.type = "Car";
+    }
 
     public Car(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);
+        super.type = "Car";
     }
 
     public Car(Vehicle vehicle, int trunkSpace, CarType carType, boolean hasSatNav) {
@@ -25,6 +28,7 @@ public class Car extends Vehicle {
         this.trunkSpace = trunkSpace;
         this.carType = carType;
         this.hasSatNav = hasSatNav;
+        super.type = "Car";
     }
 
     public int getTrunkSpace() {

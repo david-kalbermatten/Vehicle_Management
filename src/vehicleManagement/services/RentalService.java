@@ -1,5 +1,9 @@
 package vehicleManagement.services;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
 
 import java.time.LocalDate;
@@ -8,10 +12,14 @@ import java.util.Date;
 import java.util.List;
 
 public class RentalService {
-    public List<Rental> rentalList = new ArrayList<>();
+    public ObservableList<Rental> rentalList = FXCollections.observableArrayList();
+
+    public RentalService() {
+        rentalList.addListener((ListChangeListener<Rental>) c -> GlobalVars.pService.writeFile());
+    }
 
     public void addRental(Rental rentalToAdd) {
-        rentalList.remove(rentalToAdd);
+        rentalList.add(rentalToAdd);
     }
 
     public void removeRental(Rental rentalToRemove) {

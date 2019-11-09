@@ -6,10 +6,13 @@ public class Motorcycle extends Vehicle {
     protected int fuelCapacity;
     protected boolean hasSatchel;
 
-    public Motorcycle() {}
+    public Motorcycle() {
+        super.type = "Motorcycle";
+    }
 
     public Motorcycle(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);
+        super.type = "Motorcycle";
     }
 
     public Motorcycle(Vehicle vehicle, int fuelCapacity, boolean hasSatchel) {
@@ -22,6 +25,7 @@ public class Motorcycle extends Vehicle {
         super(idNumber, make, model, ccm, fuelType, exteriorColor, millage, licensePlate, numberOfSeats, vehicleCategory, dateOfPurchase, priceOfPurchase, availableFrom, availableUntil, availability);
         this.fuelCapacity = fuelCapacity;
         this.hasSatchel = hasSatchel;
+        super.type = "Motorcycle";
     }
 
     public int getFuelCapacity() {

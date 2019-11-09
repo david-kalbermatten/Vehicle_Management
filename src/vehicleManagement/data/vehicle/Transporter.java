@@ -6,10 +6,13 @@ public class Transporter extends Vehicle {
     protected double heightInCm;
     protected double loadingWeightInKG;
 
-    public Transporter() {}
+    public Transporter() {
+        super.type = "Transporter";
+    }
 
     public Transporter(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);
+        super.type = "Transporter";
     }
 
     public Transporter(Vehicle vehicle, double heightInCm, double loadingWeightInKG) {
@@ -22,6 +25,7 @@ public class Transporter extends Vehicle {
         super(idNumber, make, model, ccm, fuelType, exteriorColor, millage, licensePlate, numberOfSeats, vehicleCategory, dateOfPurchase, priceOfPurchase, availableFrom, availableUntil, availability);
         this.heightInCm = heightInCm;
         this.loadingWeightInKG = loadingWeightInKG;
+        super.type = "Transporter";
     }
 
     public double getHeightInCm() {

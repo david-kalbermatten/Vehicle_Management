@@ -4,7 +4,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import vehicleManagement.GlobalVars;
-import vehicleManagement.data.vehicle.Vehicle;
 import vehicleManagement.services.PersistenceService;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.VehicleService;
@@ -16,13 +15,21 @@ public class Main extends Application {
         GlobalVars.vService = new VehicleService();
         GlobalVars.rService = new RentalService();
         GlobalVars.pService = new PersistenceService();
+        GlobalVars.stage = primaryStage;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicleManagement/ui/main/mainScreen.fxml"));
+        //GlobalVars.pService.readFile();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicleManagement/ui/mainScreen/mainScreen.fxml"));
         loader.load();
         Parent root = loader.getRoot();
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Vehicle Management");
+        primaryStage.setIconified(false);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
+            GlobalVars.pService.writeFile();
+            System.exit(0);
+        });
     }
 
 

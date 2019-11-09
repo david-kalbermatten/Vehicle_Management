@@ -1,4 +1,4 @@
-package vehicleManagement.ui.main;
+package vehicleManagement.ui.mainScreen;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
@@ -30,21 +30,9 @@ public class MainScreenController implements Initializable {
     @FXML JFXButton displayVehicles;
     @FXML VBox sideMenu;
 
-    private JFXSnackbar snackbar;
-    private BorderPane snackBarContainer;
-    private Text snackBarText;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        defineSnackBar();
-        /*sideMenu.getChildren().forEach(menuItem -> {
-            JFXButton item = ((JFXButton) menuItem);
-            ImageView image = new ImageView("/vehicleManagement/resources/baseline_directions_car_white_48dp.png");
-            image.setFitWidth(24);
-            image.setFitHeight(24);
-            item.setGraphic(image);
-            //item.setGraphicTextGap(20);
-        });*/
+        changeViewDisplayVehicles();
     }
 
     public void changeViewDisplayVehicles() {
@@ -85,27 +73,6 @@ public class MainScreenController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void showSnackBar(int numberOfMenuItem) {
-        snackBarText.setText("I'm the Text Number " + numberOfMenuItem);
-        snackbar.enqueue(new JFXSnackbar.SnackbarEvent(snackBarContainer, Duration.seconds(4)));
-    }
-
-    private void defineSnackBar() {
-        snackbar = new JFXSnackbar(rootElement);
-        snackBarContainer = new BorderPane();
-        snackBarText = new Text("Placeholder SnackBar Text");
-
-        //Styling
-        rootElement.widthProperty().addListener((observable, oldValue, newValue) -> snackBarContainer.setPrefWidth(newValue.floatValue()));
-        snackBarContainer.setPrefHeight(30);
-        snackBarContainer.setBackground(new Background(new BackgroundFill(Color.rgb(40,40,40), CornerRadii.EMPTY, Insets.EMPTY)));
-        snackBarText.setFill(Paint.valueOf("white"));
-        snackbar.setEffect(new DropShadow(8,0,-2,Color.rgb(54,54,54,0.5)));
-
-        snackBarContainer.setLeft(snackBarText);
-        BorderPane.setAlignment(snackBarText, Pos.CENTER_LEFT);
     }
 
     public void closeProgram() {

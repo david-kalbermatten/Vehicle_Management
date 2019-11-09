@@ -4,21 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import vehicleManagement.GlobalVars;
-import vehicleManagement.data.vehicle.Car;
-import vehicleManagement.data.vehicle.Motorcycle;
-import vehicleManagement.data.vehicle.Transporter;
-import vehicleManagement.data.vehicle.Vehicle;
+import vehicleManagement.data.vehicle.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VehicleService {
     public ObservableList<Vehicle> vehicleList = FXCollections.observableArrayList();
 
     public VehicleService() {
-        vehicleList.addListener(new ListChangeListener<Vehicle>() {
-            @Override
-            public void onChanged(Change<? extends Vehicle> c) {
-                GlobalVars.pService.update();
-            }
-        });
+        vehicleList.addListener((ListChangeListener<Vehicle>) c -> GlobalVars.pService.writeFile());
     }
 
     public void addVehicle(Vehicle vehicleToAdd) {
@@ -32,6 +27,30 @@ public class VehicleService {
 
     public void updateVehicle(Vehicle oldVehicle, Vehicle newVehicle) {
         vehicleList.set(vehicleList.indexOf(oldVehicle), newVehicle);
+    }
+
+    public List<Vehicle> getFilteredList(VehicleTypes vehicleType) {
+        List<Vehicle> list = new ArrayList<>(vehicleList);
+        List<Vehicle> itemsToRemove = new ArrayList<>();
+        if(vehicleType != null) {
+            list.forEach(vehicle -> {
+                switch (vehicleType) {
+                    case CAR:
+                        if(!(vehicle instanceof Car)) itemsToRemove.add(vehicle);
+                        break;
+                    case MOTORCYCLE:
+                        if(!(vehicle instanceof Motorcycle)) itemsToRemove.add(vehicle);
+                        break;
+                    case TRANSPORTER:
+                        if(!(vehicle instanceof Transporter)) itemsToRemove.add(vehicle);
+                        break;
+                }
+            });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
+        }
+
+        return list;
     }
 
     public static void debugVehicle(Vehicle vehicle) {

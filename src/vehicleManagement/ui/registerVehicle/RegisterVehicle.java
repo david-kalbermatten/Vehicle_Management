@@ -89,7 +89,18 @@ public class RegisterVehicle implements Initializable {
     }
 
     private void saveVehicle(VehicleTypes vehicleType) {
-        Vehicle tmpVehicle = new Vehicle();
+        Vehicle tmpVehicle = null;
+        switch (vehicleType) {
+            case CAR:
+                tmpVehicle = new Car();
+                break;
+            case MOTORCYCLE:
+                tmpVehicle = new Motorcycle();
+                break;
+            case TRANSPORTER:
+                tmpVehicle = new Transporter();
+                break;
+        }
         tmpVehicle.setIdNumber(idNumber.getText());
         tmpVehicle.setMake(make.getText());
         tmpVehicle.setModel(model.getText());
@@ -106,23 +117,18 @@ public class RegisterVehicle implements Initializable {
         tmpVehicle.setAvailableUntil(availableUntil.getValue());
         tmpVehicle.setAvailability(availability.isSelected());
 
-        switch (vehicleType) {
-            case CAR:
-                tmpVehicle = new Car(tmpVehicle);
-                ((Car) tmpVehicle).setCarType(carType.getValue());
-                ((Car) tmpVehicle).setTrunkSpace(Integer.parseInt(trunkSpace.getText()));
-                ((Car) tmpVehicle).setHasSatNav(hasSatNav.isSelected());
-                break;
-            case MOTORCYCLE:
-                tmpVehicle = new Motorcycle(tmpVehicle);
-                ((Motorcycle) tmpVehicle).setFuelCapacity(Integer.parseInt(fuelCapacity.getText()));
-                ((Motorcycle) tmpVehicle).setHasSatchel(hasSatchel.isSelected());
-                break;
-            case TRANSPORTER:
-                tmpVehicle = new Transporter(tmpVehicle);
-                ((Transporter) tmpVehicle).setHeightInCm(Double.parseDouble(heightInCm.getText()));
-                ((Transporter) tmpVehicle).setLoadingWeightInKG(Double.parseDouble(loadingWeightInKG.getText()));
-                break;
+        if(tmpVehicle instanceof Car) {
+            ((Car) tmpVehicle).setCarType(carType.getValue());
+            ((Car) tmpVehicle).setTrunkSpace(Integer.parseInt(trunkSpace.getText()));
+            ((Car) tmpVehicle).setHasSatNav(hasSatNav.isSelected());
+        }
+        if(tmpVehicle instanceof Motorcycle) {
+            ((Motorcycle) tmpVehicle).setFuelCapacity(Integer.parseInt(fuelCapacity.getText()));
+            ((Motorcycle) tmpVehicle).setHasSatchel(hasSatchel.isSelected());
+        }
+        if(tmpVehicle instanceof Transporter) {
+            ((Transporter) tmpVehicle).setHeightInCm(Double.parseDouble(heightInCm.getText()));
+            ((Transporter) tmpVehicle).setLoadingWeightInKG(Double.parseDouble(loadingWeightInKG.getText()));
         }
 
         if(GlobalVars.inVehicleEditMode) {

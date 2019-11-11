@@ -1,11 +1,28 @@
 package vehicleManagement.data.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import vehicleManagement.resources.supportClasses.LocalDateDeserializer;
+import vehicleManagement.resources.supportClasses.LocalDateSerializer;
 
 import java.time.LocalDate;
 
-public class Vehicle extends RecursiveTreeObject<Vehicle> {
-    public String type = "Vehicle";
+/*@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "@class"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Car.class, name = "Car"),
+        @JsonSubTypes.Type(value = Motorcycle.class, name = "Motorcycle"),
+        @JsonSubTypes.Type(value = Transporter.class, name = "Transporter")
+})*/
+public abstract class Vehicle {
     protected String idNumber;
     protected String make;
     protected String model;
@@ -16,9 +33,15 @@ public class Vehicle extends RecursiveTreeObject<Vehicle> {
     protected String licensePlate;
     protected int numberOfSeats;
     protected VehicleCategory vehicleCategory;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     protected LocalDate dateOfPurchase;
     protected Double priceOfPurchase;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     protected LocalDate availableFrom;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     protected LocalDate availableUntil;
     protected boolean availability;
 

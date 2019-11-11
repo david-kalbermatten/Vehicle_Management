@@ -1,6 +1,10 @@
 package vehicleManagement.data.rental;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import vehicleManagement.data.vehicle.Vehicle;
+import vehicleManagement.resources.supportClasses.LocalDateDeserializer;
+import vehicleManagement.resources.supportClasses.LocalDateSerializer;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -124,7 +128,11 @@ public class Rental {
 
     //Rental values
     private Vehicle vehicle;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate rentedFrom;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate rentedUntil;
     private Double rentalPrice;
     private RentalStatus status;
@@ -137,6 +145,8 @@ public class Rental {
     private String customerArea;
     private String customerPhone;
     private String customerEmail;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate customerBirthday;
     private String customerLicenseID;
 

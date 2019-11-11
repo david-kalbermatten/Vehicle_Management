@@ -36,7 +36,7 @@ public class RegisterRental implements Initializable {
     public JFXComboBox<VehicleTypes> vehicleType;
     public JFXButton confirmButton;
 
-    public JFXTreeTableView<Vehicle> vehicleTable;
+    public JFXTreeTableView vehicleTable;
     public JFXDatePicker rentedFrom;
     public JFXDatePicker rentedUntil;
     public JFXTextField rentalPrice;
@@ -92,14 +92,20 @@ public class RegisterRental implements Initializable {
                 if(((JFXComboBox) input).getValue() == null) return false;
             }
         }
-        if(vehicleTable.getSelectionModel().getSelectedCells().isEmpty()) return false;
-        return true;
+        return !vehicleTable.getSelectionModel().getSelectedCells().isEmpty();
     }
 
     private void saveRental() {
         Rental tmpRental = new Rental();
+
         //Set Rental Information
-        tmpRental.setVehicle(vehicleTable.getSelectionModel().getSelectedCells().get(0).getTreeItem().getValue());
+        Vehicle sV = (Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getSelectedIndex()).getValue();
+        for (Vehicle vehicle : vehicleService.vehicleList) {
+             if(sV == vehicle) {
+                 tmpRental.setVehicle(vehicle);
+                 System.out.println("Found a match for selected vehicle");
+             }
+        }
         tmpRental.setRentedFrom(rentedFrom.getValue());
         tmpRental.setRentedUntil(rentedUntil.getValue());
         tmpRental.setRentalPrice(Double.parseDouble(rentalPrice.getText()));

@@ -17,7 +17,7 @@ public class Main extends Application {
         GlobalVars.pService = new PersistenceService();
         GlobalVars.stage = primaryStage;
 
-        //GlobalVars.pService.readFile();
+        GlobalVars.pService.readFile();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicleManagement/ui/mainScreen/mainScreen.fxml"));
         loader.load();

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleService {
-    public ObservableList<Vehicle> vehicleList = FXCollections.observableArrayList();
+    public List<Vehicle> vehicleList = new ArrayList<>();
 
     public VehicleService() {
-        vehicleList.addListener((ListChangeListener<Vehicle>) c -> GlobalVars.pService.writeFile());
+        //vehicleList.addListener((ListChangeListener<Vehicle>) c -> GlobalVars.pService.writeFile());
     }
 
     public void addVehicle(Vehicle vehicleToAdd) {

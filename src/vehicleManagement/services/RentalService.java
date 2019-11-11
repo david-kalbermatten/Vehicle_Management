@@ -12,10 +12,10 @@ import java.util.Date;
 import java.util.List;
 
 public class RentalService {
-    public ObservableList<Rental> rentalList = FXCollections.observableArrayList();
+    public List<Rental> rentalList = new ArrayList<>();
 
     public RentalService() {
-        rentalList.addListener((ListChangeListener<Rental>) c -> GlobalVars.pService.writeFile());
+        //rentalList.addListener((ListChangeListener<Rental>) c -> GlobalVars.pService.writeFile());
     }
 
     public void addRental(Rental rentalToAdd) {

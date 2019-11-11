@@ -8,8 +8,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="com.jfoenix:jfoenix:9.0.9" level="project" />
-    <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-databind:2.8.2" level="application" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.8.6" level="project" />
-    <orderEntry type="library" name="jackson-2.10.0" level="project" />
+    <orderEntry type="library" exported="" name="com.fasterxml.jackson.core:jackson-annotations:2.10.0" level="project" />
+    <orderEntry type="library" exported="" name="com.fasterxml.jackson.core:jackson-core:2.10.0" level="project" />
+    <orderEntry type="library" exported="" name="com.fasterxml.jackson.core:jackson-databind:2.10.0" level="project" />
   </component>
 </module>

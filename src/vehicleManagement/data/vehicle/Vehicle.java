@@ -11,17 +11,7 @@ import vehicleManagement.resources.supportClasses.LocalDateSerializer;
 
 import java.time.LocalDate;
 
-/*@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.CLASS,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "@class"
-)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Car.class, name = "Car"),
-        @JsonSubTypes.Type(value = Motorcycle.class, name = "Motorcycle"),
-        @JsonSubTypes.Type(value = Transporter.class, name = "Transporter")
-})*/
+
 public abstract class Vehicle {
     protected String idNumber;
     protected String make;

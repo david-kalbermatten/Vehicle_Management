@@ -13,6 +13,8 @@ import java.time.LocalDate;
 
 
 public abstract class Vehicle {
+    protected int id;
+
     protected String idNumber;
     protected String make;
     protected String model;
@@ -35,9 +37,18 @@ public abstract class Vehicle {
     protected LocalDate availableUntil;
     protected boolean availability;
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Vehicle() { }
 
     public Vehicle(String idNumber, String make, String model, int ccm, FuelType fuelType, String exteriorColor, int millage, String licensePlate, int numberOfSeats, VehicleCategory vehicleCategory, LocalDate dateOfPurchase, Double priceOfPurchase, LocalDate availableFrom, LocalDate availableUntil, boolean availability) {
+        this();
         this.idNumber = idNumber;
         this.make = make;
         this.model = model;

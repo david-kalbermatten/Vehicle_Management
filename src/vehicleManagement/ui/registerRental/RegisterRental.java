@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
-import vehicleManagement.data.vehicle.Vehicle;
-import vehicleManagement.data.vehicle.VehicleTypes;
+import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
@@ -97,15 +96,11 @@ public class RegisterRental implements Initializable {
 
     private void saveRental() {
         Rental tmpRental = new Rental();
-
         //Set Rental Information
-        Vehicle sV = (Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getSelectedIndex()).getValue();
-        for (Vehicle vehicle : vehicleService.vehicleList) {
-             if(sV == vehicle) {
-                 tmpRental.setVehicle(vehicle);
-                 System.out.println("Found a match for selected vehicle");
-             }
-        }
+        Object selectedVehicle = vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getSelectedIndex()).getValue();
+        if(selectedVehicle instanceof Car) tmpRental.setVehicle((Car) selectedVehicle);
+        if(selectedVehicle instanceof Motorcycle) tmpRental.setVehicle((Motorcycle) selectedVehicle);
+        if(selectedVehicle instanceof Transporter) tmpRental.setVehicle((Transporter) selectedVehicle);
         tmpRental.setRentedFrom(rentedFrom.getValue());
         tmpRental.setRentedUntil(rentedUntil.getValue());
         tmpRental.setRentalPrice(Double.parseDouble(rentalPrice.getText()));

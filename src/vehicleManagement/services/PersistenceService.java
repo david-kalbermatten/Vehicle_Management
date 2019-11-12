@@ -1,12 +1,13 @@
 package vehicleManagement.services;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import vehicleManagement.GlobalVars;
+import vehicleManagement.data.DataWrapper;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.vehicle.*;
 
@@ -15,63 +16,71 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 public class PersistenceService {
-    File vehicleFile;
-    File rentalFile;
+    File dataFile;
     ObjectMapper objectMapper;
 
     public PersistenceService() {
-        vehicleFile = new File("vehicleFile.json");
-        rentalFile = new File("rentalFile.json");
+        dataFile = new File("data.json");
         objectMapper = new ObjectMapper();
         PolymorphicTypeValidator ptv =
                 BasicPolymorphicTypeValidator.builder()
                         .allowIfSubType(Vehicle.class)
                         .build();
         objectMapper.activateDefaultTyping(ptv);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false);
+        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
     }
     public void readFile() {
-        try {
-            List<Vehicle> vehicleList = objectMapper.readValue(vehicleFile, new TypeReference<ArrayList<Vehicle>>() {
-                @Override
-                public Type getType() {
-                    return super.getType();
-                }
-            });
-            List<Rental> rentalList = objectMapper.readValue(rentalFile, new TypeReference<ArrayList<Rental>>() {
-                @Override
-                public Type getType() {
-                    return super.getType();
-                }
-            });
-            GlobalVars.vService.vehicleList.addAll(vehicleList);
-            GlobalVars.rService.rentalList.addAll(rentalList);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(dataFile.exists()) {
+            try {
+                DataWrapper dataWrapper = objectMapper.readValue(dataFile, DataWrapper.class);
+                GlobalVars.vService.vehicleList.addAll(dataWrapper.vehicleList);
+                dataWrapper.rentalList.forEach(rental -> {
+                    GlobalVars.vService.vehicleList.forEach(vehicle -> {
+                        if(rental.getVehicleID() == vehicle.getId()) {
+                            rental.setVehicle(vehicle);
+                        }
+                    });
+                    rental.setVehicleID(-1);
+                });
+                GlobalVars.vService.vehicleList.forEach(v -> v.setId(-1));
+                GlobalVars.rService.rentalList.addAll(dataWrapper.rentalList);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Loaded File");
+        } else {
+            System.out.println("File not found");
         }
-        System.out.println("Loaded File");
     }
 
     public void writeFile() {
         List<Vehicle> vehicleList = new ArrayList<>(GlobalVars.vService.vehicleList);
         List<Rental> rentalList = new ArrayList<>(GlobalVars.rService.rentalList);
+        for (int i = 0; i < vehicleList.size(); i++) {
+            vehicleList.get(i).setId(i);
+        }
+        rentalList.forEach(rental -> {
+            rental.setVehicleID(rental.getVehicle().getId());
+            rental.setVehicle(null);
+        });
 
-        String vehicleJson = null;
-        String rentalJson = null;
+        DataWrapper dataWrapper = new DataWrapper();
+        dataWrapper.vehicleList = new ArrayList<>(vehicleList);
+        dataWrapper.rentalList = new ArrayList<>(rentalList);
+
+        String dataJson = null;
         try {
-            vehicleJson = objectMapper.writeValueAsString(vehicleList);
-            rentalJson = objectMapper.writeValueAsString(rentalList);
+            dataJson = objectMapper.writeValueAsString(dataWrapper);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             System.out.println("Parsing to JSON failed!");
         }
-        if(vehicleJson != null && rentalJson != null) {
+        if(dataJson != null) {
             try {
-                BufferedWriter vehicleFileWriter = new BufferedWriter(new FileWriter(vehicleFile));
-                BufferedWriter rentalFileWriter = new BufferedWriter(new FileWriter(rentalFile));
-                vehicleFileWriter.write(vehicleJson);
-                vehicleFileWriter.close();
-                rentalFileWriter.write(rentalJson);
-                rentalFileWriter.close();
+                BufferedWriter dataWriter = new BufferedWriter(new FileWriter(dataFile));
+                dataWriter.write(dataJson);
+                dataWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Writing to File failed!");

@@ -128,6 +128,7 @@ public class Rental {
 
     //Rental values
     private Vehicle vehicle;
+    private int vehicleID;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate rentedFrom;
@@ -150,4 +151,11 @@ public class Rental {
     private LocalDate customerBirthday;
     private String customerLicenseID;
 
+    public int getVehicleID() {
+        return vehicleID;
+    }
+
+    public void setVehicleID(int vehicleID) {
+        this.vehicleID = vehicleID;
+    }
 }

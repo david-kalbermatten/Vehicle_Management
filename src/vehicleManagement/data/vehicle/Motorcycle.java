@@ -7,7 +7,7 @@ public class Motorcycle extends Vehicle {
     protected boolean hasSatchel;
 
     public Motorcycle() {
-
+        super();
     }
 
     public Motorcycle(Vehicle vehicle) {

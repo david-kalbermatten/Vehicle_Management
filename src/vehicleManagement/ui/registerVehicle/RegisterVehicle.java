@@ -90,16 +90,20 @@ public class RegisterVehicle implements Initializable {
 
     private void saveVehicle(VehicleTypes vehicleType) {
         Vehicle tmpVehicle = null;
-        switch (vehicleType) {
-            case CAR:
-                tmpVehicle = new Car();
-                break;
-            case MOTORCYCLE:
-                tmpVehicle = new Motorcycle();
-                break;
-            case TRANSPORTER:
-                tmpVehicle = new Transporter();
-                break;
+        if(GlobalVars.inVehicleEditMode) {
+            tmpVehicle = GlobalVars.vehicleToEdit;
+        } else {
+            switch (vehicleType) {
+                case CAR:
+                    tmpVehicle = new Car();
+                    break;
+                case MOTORCYCLE:
+                    tmpVehicle = new Motorcycle();
+                    break;
+                case TRANSPORTER:
+                    tmpVehicle = new Transporter();
+                    break;
+            }
         }
         tmpVehicle.setIdNumber(idNumber.getText());
         tmpVehicle.setMake(make.getText());
@@ -121,19 +125,17 @@ public class RegisterVehicle implements Initializable {
             ((Car) tmpVehicle).setCarType(carType.getValue());
             ((Car) tmpVehicle).setTrunkSpace(Integer.parseInt(trunkSpace.getText()));
             ((Car) tmpVehicle).setHasSatNav(hasSatNav.isSelected());
-        }
+        } else
         if(tmpVehicle instanceof Motorcycle) {
             ((Motorcycle) tmpVehicle).setFuelCapacity(Integer.parseInt(fuelCapacity.getText()));
             ((Motorcycle) tmpVehicle).setHasSatchel(hasSatchel.isSelected());
-        }
+        } else
         if(tmpVehicle instanceof Transporter) {
             ((Transporter) tmpVehicle).setHeightInCm(Double.parseDouble(heightInCm.getText()));
             ((Transporter) tmpVehicle).setLoadingWeightInKG(Double.parseDouble(loadingWeightInKG.getText()));
         }
 
-        if(GlobalVars.inVehicleEditMode) {
-            vehicleService.updateVehicle(GlobalVars.vehicleToEdit, tmpVehicle);
-        } else {
+        if (!GlobalVars.inVehicleEditMode) {
             vehicleService.addVehicle(tmpVehicle);
         }
         System.out.println("Temporary Vehicle ...");
@@ -174,8 +176,10 @@ public class RegisterVehicle implements Initializable {
     private void initializeUI(boolean isInEditMode) {
         if(isInEditMode) {
             confirmButton.setText("Update Vehicle");
+            vehicleType.setDisable(true);
         } else {
             confirmButton.setText("Register Vehicle");
+            vehicleType.setDisable(false);
         }
 
         if(isInEditMode) {

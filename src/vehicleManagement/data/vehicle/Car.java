@@ -12,7 +12,9 @@ public class Car extends Vehicle {
     protected CarType carType;
     protected boolean hasSatNav;
 
-    public Car() { }
+    public Car() {
+        super();
+    }
 
     public Car(Vehicle vehicle) {
         super(vehicle.idNumber, vehicle.make, vehicle.model, vehicle.ccm, vehicle.fuelType, vehicle.exteriorColor, vehicle.millage, vehicle.licensePlate, vehicle.numberOfSeats, vehicle.vehicleCategory, vehicle.dateOfPurchase, vehicle.priceOfPurchase, vehicle.availableFrom, vehicle.availableUntil, vehicle.availability);

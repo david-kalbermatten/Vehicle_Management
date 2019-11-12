@@ -7,7 +7,7 @@ public class Transporter extends Vehicle {
     protected double loadingWeightInKG;
 
     public Transporter() {
-
+        super();
     }
 
     public Transporter(Vehicle vehicle) {

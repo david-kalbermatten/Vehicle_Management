@@ -85,7 +85,7 @@ public class DisplayVehicles implements Initializable {
             vehicleService.removeVehicle((Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getFocusedIndex()).getValue());
             populateTableView();
         } else {
-            ValidatorService.showSnackbar("No Rental selected", root);
+            ValidatorService.showSnackbar("No Vehicle selected", root);
         }
     }
 }

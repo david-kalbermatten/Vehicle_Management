@@ -12,7 +12,7 @@ import vehicleManagement.data.vehicle.Vehicle;
 import java.time.LocalDate;
 import java.util.List;
 
-public class InterfaceInitializer {
+public class ViewController {
     public static void initializeVehicleTableView(JFXTreeTableView treeTableView) {
         //Prepare Vehicle Table View
         JFXTreeTableColumn<Vehicle, String> columnId = new JFXTreeTableColumn<>("ID");
@@ -38,13 +38,24 @@ public class InterfaceInitializer {
         JFXTreeTableColumn<Rental, LocalDate> columnRentedFrom = new JFXTreeTableColumn<>("From");
         JFXTreeTableColumn<Rental, LocalDate> columnRentedUntil = new JFXTreeTableColumn<>("Until");
         JFXTreeTableColumn<Rental, Double> columnRentalPrice = new JFXTreeTableColumn<>("Price");
+        JFXTreeTableColumn<Rental, String> columnCustomerSurname = new JFXTreeTableColumn<>("Surname");
+        JFXTreeTableColumn<Rental, String> columnCustomerName = new JFXTreeTableColumn<>("Name");
 
         columnRentalStatus.setCellValueFactory(new TreeItemPropertyValueFactory<>("status"));
         columnRentedFrom.setCellValueFactory(new TreeItemPropertyValueFactory<>("rentedFrom"));
         columnRentedUntil.setCellValueFactory(new TreeItemPropertyValueFactory<>("rentedUntil"));
         columnRentalPrice.setCellValueFactory(new TreeItemPropertyValueFactory<>("rentalPrice"));
+        columnCustomerSurname.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerSurname"));
+        columnCustomerName.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerName"));
 
-        treeTableView.getColumns().addAll(columnRentalStatus, columnRentedFrom, columnRentedUntil, columnRentalPrice);
+        treeTableView.getColumns().addAll(
+                columnRentalStatus,
+                columnRentedFrom,
+                columnRentedUntil,
+                columnRentalPrice,
+                columnCustomerSurname,
+                columnCustomerName
+        );
     }
 
     public static void populateTableView(List objectList, JFXTreeTableView treeTableView) {

@@ -11,7 +11,7 @@ import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
-import vehicleManagement.ui.InterfaceInitializer;
+import vehicleManagement.ui.ViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -166,7 +166,7 @@ public class RegisterVehicle implements Initializable {
                     list.add(heightInCm);
                     break;
             }
-            return InterfaceInitializer.isAllSet(list);
+            return ViewController.isAllSet(list);
         } else {
             return false;
         }

@@ -21,37 +21,38 @@ public class RentalService {
     public List<Rental> getFilteredList(RentalStatus rentalStatus, String customerName, LocalDate rentalDate) {
         List<Rental> list = new ArrayList<>(rentalList);
         List<Rental> itemsToRemove = new ArrayList<>();
-        if(rentalStatus != null) {
+        if (rentalStatus != null) {
             list.forEach(rental -> {
                 switch (rentalStatus) {
                     case OPEN:
-                        if(rental.getStatus() != RentalStatus.OPEN) itemsToRemove.add(rental);
+                        if (rental.getStatus() != RentalStatus.OPEN) itemsToRemove.add(rental);
                         break;
                     case PAYED:
-                        if(rental.getStatus() != RentalStatus.PAYED) itemsToRemove.add(rental);
+                        if (rental.getStatus() != RentalStatus.PAYED) itemsToRemove.add(rental);
                         break;
                     case CLOSED:
-                        if(rental.getStatus() != RentalStatus.CLOSED) itemsToRemove.add(rental);
+                        if (rental.getStatus() != RentalStatus.CLOSED) itemsToRemove.add(rental);
                         break;
                 }
             });
             list.removeAll(itemsToRemove);
             itemsToRemove.clear();
         }
-        if(!customerName.isEmpty()) {
+        if (!customerName.isEmpty()) {
             list.forEach(rental -> {
-                if(!rental.getCustomerName().contains(customerName)) {
+                if (!((ValidatorService.containsIgnoreCase(rental.getCustomerName(), customerName)) || ValidatorService.containsIgnoreCase(rental.getCustomerSurname(), customerName))) {
                     itemsToRemove.add(rental);
-                };
+                }
+                ;
             });
             list.removeAll(itemsToRemove);
             itemsToRemove.clear();
         }
-        if(rentalDate != null) {
+        if (rentalDate != null) {
             list.forEach(rental -> {
-                if(!(rental.getRentedFrom().compareTo(rentalDate) <= 0) && (rental.getRentedUntil().compareTo(rentalDate) >= 0)) {
+                if (!(rental.getRentedFrom().compareTo(rentalDate) <= 0) && (rental.getRentedUntil().compareTo(rentalDate) >= 0)) {
                     itemsToRemove.add(rental);
-                };
+                }
             });
             list.removeAll(itemsToRemove);
             itemsToRemove.clear();

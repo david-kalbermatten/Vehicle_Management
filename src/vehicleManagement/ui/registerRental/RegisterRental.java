@@ -14,7 +14,7 @@ import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
-import vehicleManagement.ui.InterfaceInitializer;
+import vehicleManagement.ui.ViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class RegisterRental implements Initializable {
     }
 
     public void confirm() {
-        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+        if(ViewController.isAllSet(inputFieldList)) {
             saveRental();
             try {
                 GlobalVars.rentalToEdit = null;
@@ -78,7 +78,7 @@ public class RegisterRental implements Initializable {
         rentalStatus.getItems().setAll(RentalStatus.values());
         ValidatorService.setInputFieldToInteger(plz);
         ValidatorService.setInputFieldToDouble(rentalPrice);
-        InterfaceInitializer.initializeVehicleTableView(vehicleTable);
+        ViewController.initializeVehicleTableView(vehicleTable);
         populateTableView();
 
         if(isInEditMode) {
@@ -136,7 +136,7 @@ public class RegisterRental implements Initializable {
         birthday.setValue(rentalToEdit.getCustomerBirthday());
         licenseId.setText(rentalToEdit.getCustomerLicenseID());
 
-        InterfaceInitializer.setSelectedOnTableView(vehicleTable, rentalToEdit.getVehicle());
+        ViewController.setSelectedOnTableView(vehicleTable, rentalToEdit.getVehicle());
     }
 
     private void initializeInputFieldList() {
@@ -160,6 +160,6 @@ public class RegisterRental implements Initializable {
     }
 
     public void populateTableView() {
-        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
+        ViewController.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
     }
 }

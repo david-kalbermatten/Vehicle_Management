@@ -1,15 +1,11 @@
 package vehicleManagement.services;
 
 import com.jfoenix.controls.JFXSnackbar;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -17,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 
-import java.awt.event.KeyListener;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -89,5 +84,9 @@ public class ValidatorService {
 
         snackBarText.setText(message);
         snackbar.enqueue(new JFXSnackbar.SnackbarEvent(snackBarContainer, Duration.seconds(3)));
+    }
+
+    public static boolean containsIgnoreCase(String str, String subString) {
+        return str.toLowerCase().contains(subString.toLowerCase());
     }
 }

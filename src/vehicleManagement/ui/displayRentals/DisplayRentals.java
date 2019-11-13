@@ -15,7 +15,7 @@ import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
-import vehicleManagement.ui.InterfaceInitializer;
+import vehicleManagement.ui.ViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,13 +44,13 @@ public class DisplayRentals implements Initializable {
         customerName.textProperty().addListener(observable -> populateTableView());
         rentalDate.valueProperty().addListener(observable -> populateTableView());
 
-        InterfaceInitializer.initializeRentalTableView(rentalTable);
-        InterfaceInitializer.populateTableView(rentalService.rentalList, rentalTable);
+        ViewController.initializeRentalTableView(rentalTable);
+        ViewController.populateTableView(rentalService.rentalList, rentalTable);
     }
 
 
     public void confirm() {
-        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+        if(ViewController.isAllSet(inputFieldList)) {
             try {
                 GlobalVars.inRentalEditMode = true;
                 GlobalVars.rentalToEdit = (Rental) rentalTable.getTreeItem(rentalTable.getSelectionModel().getSelectedIndex()).getValue();
@@ -74,7 +74,7 @@ public class DisplayRentals implements Initializable {
     }
 
     public void delete() {
-        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+        if(ViewController.isAllSet(inputFieldList)) {
             rentalService.removeRental((Rental) rentalTable.getTreeItem(rentalTable.getSelectionModel().getFocusedIndex()).getValue());
             populateTableView();
         } else {
@@ -83,7 +83,7 @@ public class DisplayRentals implements Initializable {
     }
 
     public void populateTableView() {
-        InterfaceInitializer.populateTableView(rentalService.getFilteredList(rentalStatus.getValue(), customerName.getText(), rentalDate.getValue()), rentalTable);
+        ViewController.populateTableView(rentalService.getFilteredList(rentalStatus.getValue(), customerName.getText(), rentalDate.getValue()), rentalTable);
     }
 
     public void resetFilters() {

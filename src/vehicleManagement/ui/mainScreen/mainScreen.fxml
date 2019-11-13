@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.*?>
-
+<?import java.lang.*?>
 <BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.mainScreen.MainScreenController">
    <left>
       <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER">
@@ -34,6 +33,6 @@
       </VBox>
    </left>
    <center>
-      <BorderPane fx:id="rootElement" prefHeight="410.0" prefWidth="735.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="rootElement" prefHeight="410.0" prefWidth="640.0" styleClass="main-pane" stylesheets="@/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

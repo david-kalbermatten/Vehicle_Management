@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane fx:id="root" minHeight="482.0" minWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="root" minHeight="482.0" minWidth="867.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
    <children>
       <HBox alignment="BOTTOM_LEFT" layoutX="265.0" layoutY="14.0" prefHeight="36.0" spacing="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="472.0" AnchorPane.topAnchor="14.0">
          <children>

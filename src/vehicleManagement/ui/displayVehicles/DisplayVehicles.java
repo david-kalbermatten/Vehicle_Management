@@ -15,7 +15,7 @@ import vehicleManagement.data.vehicle.VehicleCategory;
 import vehicleManagement.data.vehicle.VehicleTypes;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
-import vehicleManagement.ui.InterfaceInitializer;
+import vehicleManagement.ui.ViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,12 +43,12 @@ public class DisplayVehicles implements Initializable {
         vehicleCategory.getItems().setAll(VehicleCategory.values());
         defineInputFieldList();
         GlobalVars.resizeStage(root);
-        InterfaceInitializer.initializeVehicleTableView(vehicleTable);
+        ViewController.initializeVehicleTableView(vehicleTable);
         populateTableView();
     }
 
     public void confirm() {
-        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+        if(ViewController.isAllSet(inputFieldList)) {
             try {
                 GlobalVars.inVehicleEditMode = true;
                 GlobalVars.vehicleToEdit = (Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getFocusedIndex()).getValue();
@@ -72,7 +72,7 @@ public class DisplayVehicles implements Initializable {
     }
 
     public void populateTableView() {
-        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), true), vehicleTable);
+        ViewController.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), true), vehicleTable);
     }
 
     public void resetFilters() {
@@ -81,7 +81,7 @@ public class DisplayVehicles implements Initializable {
     }
 
     public void delete() {
-        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+        if(ViewController.isAllSet(inputFieldList)) {
             vehicleService.removeVehicle((Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getFocusedIndex()).getValue());
             populateTableView();
         } else {

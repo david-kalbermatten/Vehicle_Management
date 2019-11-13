@@ -31,7 +31,7 @@
 }
 
 .delete-button {
-    -fx-background-color: rgb(104, 0, 2);
+    -fx-background-color: rgb(110, 21, 26);
     -fx-text-fill: white;
     -jfx-button-type: FLAT;
     -fx-pref-height: 28;
@@ -54,6 +54,9 @@
     -jfx-focus-color: rgb(4, 69, 104);
     -jfx-default-color: rgb(4, 69, 104);
     -jfx-checked-color: rgb(4, 69, 104);
+    -fx-pref-height: 28;
+    -fx-min-height: 28;
+    -fx-max-height: 28;
     -jfx-label-float: true;
 }
 

@@ -2,7 +2,7 @@
 
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="700.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehicles">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="640.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.displayVehicles.DisplayVehicles">
    <children>
       <JFXTreeTableView fx:id="vehicleTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="14.0" />
       <VBox layoutX="386.0" layoutY="14.0" prefHeight="242.0" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">

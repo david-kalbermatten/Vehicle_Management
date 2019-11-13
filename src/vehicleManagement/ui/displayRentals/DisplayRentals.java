@@ -1,9 +1,9 @@
 package vehicleManagement.ui.displayRentals;
 
-import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
+import vehicleManagement.data.rental.RentalStatus;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.ui.InterfaceInitializer;
@@ -24,6 +25,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DisplayRentals implements Initializable {
+    public JFXComboBox<RentalStatus> rentalStatus;
+    public JFXTextField customerName;
+    public JFXDatePicker rentalDate;
     private RentalService rentalService;
 
     public AnchorPane root;
@@ -36,6 +40,10 @@ public class DisplayRentals implements Initializable {
         rentalService = GlobalVars.rService;
         defineInputFieldList();
         GlobalVars.resizeStage(root);
+        rentalStatus.getItems().addAll(RentalStatus.values());
+        customerName.textProperty().addListener(observable -> populateTableView());
+        rentalDate.valueProperty().addListener(observable -> populateTableView());
+
         InterfaceInitializer.initializeRentalTableView(rentalTable);
         InterfaceInitializer.populateTableView(rentalService.rentalList, rentalTable);
     }
@@ -52,7 +60,7 @@ public class DisplayRentals implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            ValidatorService.showSnackbar("No Rental Selected", root);
+            ValidatorService.showSnackbar("No Rental selected", root);
         }
 
     }
@@ -63,5 +71,24 @@ public class DisplayRentals implements Initializable {
                         rentalTable
                 )
         );
+    }
+
+    public void delete() {
+        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+            rentalService.removeRental((Rental) rentalTable.getTreeItem(rentalTable.getSelectionModel().getFocusedIndex()).getValue());
+            populateTableView();
+        } else {
+            ValidatorService.showSnackbar("No Rental selected", root);
+        }
+    }
+
+    public void populateTableView() {
+        InterfaceInitializer.populateTableView(rentalService.getFilteredList(rentalStatus.getValue(), customerName.getText(), rentalDate.getValue()), rentalTable);
+    }
+
+    public void resetFilters() {
+        rentalStatus.getSelectionModel().select(-1);
+        customerName.setText("");
+        rentalDate.setValue(null);
     }
 }

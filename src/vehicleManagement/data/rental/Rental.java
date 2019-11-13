@@ -2,12 +2,11 @@ package vehicleManagement.data.rental;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import vehicleManagement.data.supportClasses.LocalDateDeserializer;
+import vehicleManagement.data.supportClasses.LocalDateSerializer;
 import vehicleManagement.data.vehicle.Vehicle;
-import vehicleManagement.resources.supportClasses.LocalDateDeserializer;
-import vehicleManagement.resources.supportClasses.LocalDateSerializer;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Rental {
     public Rental() {

@@ -30,6 +30,13 @@
     -fx-pref-height: 28;
 }
 
+.delete-button {
+    -fx-background-color: rgb(104, 0, 2);
+    -fx-text-fill: white;
+    -jfx-button-type: FLAT;
+    -fx-pref-height: 28;
+}
+
 .input-field {
     -fx-min-width: 215;
     -fx-pref-width: 215;

@@ -1,10 +1,10 @@
 package vehicleManagement.services;
 
 import vehicleManagement.data.rental.Rental;
+import vehicleManagement.data.rental.RentalStatus;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class RentalService {
@@ -18,29 +18,44 @@ public class RentalService {
         rentalList.remove(rentalToRemove);
     }
 
-    public List<Rental> searchByCustomerName(String name) {
-        List<Rental> resultList = new ArrayList<>(rentalList);
-        List<Rental> toRemove = new ArrayList<>();
-        rentalList.forEach(rental -> {
-            if(rental.getCustomerName().contains(name)) {
-                toRemove.add(rental);
-            };
-        });
-
-        resultList.removeAll(toRemove);
-        return resultList;
-    }
-
-    public List<Rental> searchByRentalDate(LocalDate date) {
-        List<Rental> resultList = new ArrayList<>(rentalList);
-        List<Rental> toRemove = new ArrayList<>();
-        rentalList.forEach(rental -> {
-            if(!(rental.getRentedFrom().compareTo(date) >= 0) && (rental.getRentedUntil().compareTo(date) <= 0)) {
-                toRemove.add(rental);
-            };
-        });
-
-        resultList.removeAll(toRemove);
-        return resultList;
+    public List<Rental> getFilteredList(RentalStatus rentalStatus, String customerName, LocalDate rentalDate) {
+        List<Rental> list = new ArrayList<>(rentalList);
+        List<Rental> itemsToRemove = new ArrayList<>();
+        if(rentalStatus != null) {
+            list.forEach(rental -> {
+                switch (rentalStatus) {
+                    case OPEN:
+                        if(rental.getStatus() != RentalStatus.OPEN) itemsToRemove.add(rental);
+                        break;
+                    case PAYED:
+                        if(rental.getStatus() != RentalStatus.PAYED) itemsToRemove.add(rental);
+                        break;
+                    case CLOSED:
+                        if(rental.getStatus() != RentalStatus.CLOSED) itemsToRemove.add(rental);
+                        break;
+                }
+            });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
+        }
+        if(!customerName.isEmpty()) {
+            list.forEach(rental -> {
+                if(!rental.getCustomerName().contains(customerName)) {
+                    itemsToRemove.add(rental);
+                };
+            });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
+        }
+        if(rentalDate != null) {
+            list.forEach(rental -> {
+                if(!(rental.getRentedFrom().compareTo(rentalDate) <= 0) && (rental.getRentedUntil().compareTo(rentalDate) >= 0)) {
+                    itemsToRemove.add(rental);
+                };
+            });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
+        }
+        return list;
     }
 }

@@ -1,13 +1,10 @@
 package vehicleManagement.ui.registerRental;
 
 import com.jfoenix.controls.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Control;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
@@ -27,11 +24,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class RegisterRental implements Initializable {
-
     VehicleService vehicleService = GlobalVars.vService;
     RentalService rentalService = GlobalVars.rService;
     private List<Control> inputFieldList;
-    private List<Vehicle> shownVehicles;
 
     public AnchorPane root;
     public JFXComboBox<VehicleTypes> vehicleType;
@@ -79,11 +74,12 @@ public class RegisterRental implements Initializable {
 
     private void initializeUI(boolean isInEditMode) {
         vehicleType.getItems().setAll(VehicleTypes.values());
+        vehicleCategory.getItems().setAll(VehicleCategory.values());
         rentalStatus.getItems().setAll(RentalStatus.values());
         ValidatorService.setInputFieldToInteger(plz);
         ValidatorService.setInputFieldToDouble(rentalPrice);
         InterfaceInitializer.initializeVehicleTableView(vehicleTable);
-        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
+        populateTableView();
 
         if(isInEditMode) {
             confirmButton.setText("Update Rental");

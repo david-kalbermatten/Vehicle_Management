@@ -2,10 +2,7 @@ package vehicleManagement.ui.displayVehicles;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -19,7 +16,6 @@ import vehicleManagement.data.vehicle.VehicleTypes;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.ui.InterfaceInitializer;
-import vehicleManagement.ui.mainScreen.MainScreenController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +30,7 @@ public class DisplayVehicles implements Initializable {
     public JFXButton confirmButton;
     public JFXComboBox<VehicleTypes> vehicleType;
     public JFXComboBox<VehicleCategory> vehicleCategory;
+    public JFXButton deleteButton;
     //Data
     private VehicleService vehicleService;
 
@@ -81,5 +78,14 @@ public class DisplayVehicles implements Initializable {
     public void resetFilters() {
         vehicleType.getSelectionModel().select(-1);
         vehicleCategory.getSelectionModel().select(-1);
+    }
+
+    public void delete() {
+        if(InterfaceInitializer.isAllSet(inputFieldList)) {
+            vehicleService.removeVehicle((Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getFocusedIndex()).getValue());
+            populateTableView();
+        } else {
+            ValidatorService.showSnackbar("No Rental selected", root);
+        }
     }
 }

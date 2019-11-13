@@ -1,10 +1,5 @@
 package vehicleManagement.data.vehicle;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import vehicleManagement.resources.supportClasses.LocalDateDeserializer;
-import vehicleManagement.resources.supportClasses.LocalDateSerializer;
-
 import java.time.LocalDate;
 
 public class Car extends Vehicle {

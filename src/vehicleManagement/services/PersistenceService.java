@@ -1,7 +1,6 @@
 package vehicleManagement.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
@@ -9,11 +8,14 @@ import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.DataWrapper;
 import vehicleManagement.data.rental.Rental;
-import vehicleManagement.data.vehicle.*;
+import vehicleManagement.data.vehicle.Vehicle;
 
-import java.io.*;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersistenceService {
     File dataFile;
@@ -30,6 +32,7 @@ public class PersistenceService {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false);
         objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
     }
+
     public void readFile() {
         if(dataFile.exists()) {
             try {

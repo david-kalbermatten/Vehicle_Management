@@ -56,10 +56,10 @@ public class PersistenceService {
 
     public void writeFile() {
         List<Vehicle> vehicleList = new ArrayList<>(GlobalVars.vService.vehicleList);
-        List<Rental> rentalList = new ArrayList<>(GlobalVars.rService.rentalList);
         for (int i = 0; i < vehicleList.size(); i++) {
             vehicleList.get(i).setId(i);
         }
+        List<Rental> rentalList = new ArrayList<>(GlobalVars.rService.rentalList);
         rentalList.forEach(rental -> {
             rental.setVehicleID(rental.getVehicle().getId());
             rental.setVehicle(null);

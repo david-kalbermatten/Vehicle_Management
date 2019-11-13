@@ -13,6 +13,7 @@ import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
+import vehicleManagement.ui.InterfaceInitializer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 
 public class RegisterVehicle implements Initializable {
     private VehicleService vehicleService = GlobalVars.vService;
@@ -82,7 +84,14 @@ public class RegisterVehicle implements Initializable {
     public void confirm() {
         if(isAllSet()) {
             saveVehicle(vehicleType.getValue());
-            ValidatorService.showSnackbar("Successfully Saved Vehicle", root);
+            try {
+                ValidatorService.showSnackbar("Successfully Saved Vehicle", ((BorderPane) root.getParent()));
+                Parent view = FXMLLoader.load(getClass().getResource("../displayVehicles/displayVehicles.fxml"));
+                ((BorderPane) root.getParent()).setCenter(view);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             ValidatorService.showSnackbar("Not all fields have been set!", root);
         }
@@ -158,16 +167,7 @@ public class RegisterVehicle implements Initializable {
                     list.add(heightInCm);
                     break;
             }
-            for (Object input : list) {
-                if(input instanceof JFXTextField) {
-                    if(((JFXTextField) input).getText().isEmpty()) return false;
-                } else if(input instanceof JFXDatePicker) {
-                    if(((JFXDatePicker) input).getValue() == null) return false;
-                } else if(input instanceof JFXComboBox) {
-                    if(((JFXComboBox) input).getValue() == null) return false;
-                }
-            }
-            return true;
+            return InterfaceInitializer.isAllSet(list);
         } else {
             return false;
         }
@@ -204,7 +204,7 @@ public class RegisterVehicle implements Initializable {
             availableUntil.setValue(vehicleToEdit.getAvailableUntil());
             availability.setSelected(vehicleToEdit.isAvailability());
 
-
+            selectVehicleType();
             switch (vehicleType.getValue()) {
                 case CAR:
                     trunkSpace.setText(String.valueOf(((Car) vehicleToEdit).getTrunkSpace()));

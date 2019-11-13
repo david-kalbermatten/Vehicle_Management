@@ -1,6 +1,7 @@
 package vehicleManagement.ui.registerRental;
 
 import com.jfoenix.controls.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -8,7 +9,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
@@ -16,6 +17,7 @@ import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
+import vehicleManagement.ui.InterfaceInitializer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +35,7 @@ public class RegisterRental implements Initializable {
 
     public AnchorPane root;
     public JFXComboBox<VehicleTypes> vehicleType;
+    public JFXComboBox<VehicleCategory> vehicleCategory;
     public JFXButton confirmButton;
 
     public JFXTreeTableView vehicleTable;
@@ -58,9 +61,15 @@ public class RegisterRental implements Initializable {
     }
 
     public void confirm() {
-        if(isAllSet()) {
+        if(InterfaceInitializer.isAllSet(inputFieldList)) {
             saveRental();
-            ValidatorService.showSnackbar("Successfully Saved Rental", root);
+            try {
+                ValidatorService.showSnackbar("Successfully Saved Vehicle", ((BorderPane) root.getParent()));
+                Parent view = FXMLLoader.load(getClass().getResource("../displayRentals/displayRentals.fxml"));
+                ((BorderPane) root.getParent()).setCenter(view);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             ValidatorService.showSnackbar("Not All Set", root);
         }
@@ -71,7 +80,8 @@ public class RegisterRental implements Initializable {
         rentalStatus.getItems().setAll(RentalStatus.values());
         ValidatorService.setInputFieldToInteger(plz);
         ValidatorService.setInputFieldToDouble(rentalPrice);
-        initializeTreeTableView();
+        InterfaceInitializer.initializeVehicleTableView(vehicleTable);
+        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
 
         if(isInEditMode) {
             confirmButton.setText("Update Rental");
@@ -81,21 +91,13 @@ public class RegisterRental implements Initializable {
         }
     }
 
-    private boolean isAllSet() {
-        for (Object input : inputFieldList) {
-            if(input instanceof JFXTextField) {
-                if(((JFXTextField) input).getText().isEmpty()) return false;
-            } else if(input instanceof JFXDatePicker) {
-                if(((JFXDatePicker) input).getValue() == null) return false;
-            } else if(input instanceof JFXComboBox) {
-                if(((JFXComboBox) input).getValue() == null) return false;
-            }
-        }
-        return !vehicleTable.getSelectionModel().getSelectedCells().isEmpty();
-    }
-
     private void saveRental() {
-        Rental tmpRental = new Rental();
+        Rental tmpRental = null;
+        if(GlobalVars.inRentalEditMode) {
+            tmpRental = GlobalVars.rentalToEdit;
+        } else {
+            tmpRental = new Rental();
+        }
         //Set Rental Information
         Object selectedVehicle = vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getSelectedIndex()).getValue();
         if(selectedVehicle instanceof Car) tmpRental.setVehicle((Car) selectedVehicle);
@@ -105,6 +107,7 @@ public class RegisterRental implements Initializable {
         tmpRental.setRentedUntil(rentedUntil.getValue());
         tmpRental.setRentalPrice(Double.parseDouble(rentalPrice.getText()));
         tmpRental.setStatus(rentalStatus.getValue());
+
         //Set Customer Information
         tmpRental.setCustomerName(name.getText());
         tmpRental.setCustomerSurname(surname.getText());
@@ -116,9 +119,7 @@ public class RegisterRental implements Initializable {
         tmpRental.setCustomerBirthday(birthday.getValue());
         tmpRental.setCustomerLicenseID(licenseId.getText());
 
-        if(GlobalVars.inRentalEditMode) {
-            rentalService.updateRental(GlobalVars.rentalToEdit, tmpRental);
-        } else {
+        if (!GlobalVars.inRentalEditMode) {
             rentalService.addRental(tmpRental);
         }
     }
@@ -136,6 +137,8 @@ public class RegisterRental implements Initializable {
         email.setText(rentalToEdit.getCustomerEmail());
         birthday.setValue(rentalToEdit.getCustomerBirthday());
         licenseId.setText(rentalToEdit.getCustomerLicenseID());
+
+        InterfaceInitializer.setSelectedOnTableView(vehicleTable, rentalToEdit.getVehicle());
     }
 
     private void initializeInputFieldList() {
@@ -152,35 +155,13 @@ public class RegisterRental implements Initializable {
                         phone,
                         email,
                         birthday,
-                        licenseId
+                        licenseId,
+                        vehicleTable
                 )
         );
     }
 
-    private void initializeTreeTableView() {
-        //Prepare Vehicle Table View
-        JFXTreeTableColumn<Vehicle, String> columnId = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Vehicle, String> columnMake = new JFXTreeTableColumn<>("Make");
-        JFXTreeTableColumn<Vehicle, String> columnModel = new JFXTreeTableColumn<>("Model");
-        JFXTreeTableColumn<Vehicle, Integer> columnCcm = new JFXTreeTableColumn<>("ccm");
-
-        columnId.setCellValueFactory(new TreeItemPropertyValueFactory<>("idNumber"));
-        columnMake.setCellValueFactory(new TreeItemPropertyValueFactory<>("make"));
-        columnModel.setCellValueFactory(new TreeItemPropertyValueFactory<>("model"));
-        columnCcm.setCellValueFactory(new TreeItemPropertyValueFactory<>("ccm"));
-
-        vehicleTable.getColumns().addAll(columnId, columnMake, columnModel, columnCcm);
-
-        selectVehicleType();
-    }
-
-    public void selectVehicleType() {
-        shownVehicles = vehicleService.getFilteredList(vehicleType.getValue());
-        TreeItem vehicles = new TreeItem<>();
-        shownVehicles.forEach(v -> {
-            vehicles.getChildren().add(new TreeItem<>(v));
-        });
-        vehicleTable.setRoot(vehicles);
-        vehicleTable.setShowRoot(false);
+    public void populateTableView() {
+        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
     }
 }

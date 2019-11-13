@@ -1,8 +1,5 @@
 package vehicleManagement.services;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 
@@ -11,10 +8,6 @@ import java.util.List;
 
 public class VehicleService {
     public List<Vehicle> vehicleList = new ArrayList<>();
-
-    public VehicleService() {
-        //vehicleList.addListener((ListChangeListener<Vehicle>) c -> GlobalVars.pService.writeFile());
-    }
 
     public void addVehicle(Vehicle vehicleToAdd) {
         vehicleList.add(vehicleToAdd);
@@ -25,13 +18,14 @@ public class VehicleService {
         vehicleList.remove(vehicleToRemove);
     }
 
-    public void updateVehicle(Vehicle oldVehicle, Vehicle newVehicle) {
-        vehicleList.set(vehicleList.indexOf(oldVehicle), newVehicle);
-    }
-
-    public List<Vehicle> getFilteredList(VehicleTypes vehicleType) {
+    public List<Vehicle> getFilteredList(VehicleTypes vehicleType, VehicleCategory vehicleCategory, boolean showUnavailableVehicles) {
         List<Vehicle> list = new ArrayList<>(vehicleList);
         List<Vehicle> itemsToRemove = new ArrayList<>();
+        if(!showUnavailableVehicles) {
+            list.forEach(vehicle -> {
+                if(!vehicle.isAvailability()) itemsToRemove.add(vehicle);
+            });
+        }
         if(vehicleType != null) {
             list.forEach(vehicle -> {
                 switch (vehicleType) {
@@ -43,6 +37,23 @@ public class VehicleService {
                         break;
                     case TRANSPORTER:
                         if(!(vehicle instanceof Transporter)) itemsToRemove.add(vehicle);
+                        break;
+                }
+            });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
+        }
+        if(vehicleCategory != null) {
+            list.forEach(vehicle -> {
+                switch (vehicleCategory) {
+                    case BASIC:
+                        if(vehicle.getVehicleCategory() != VehicleCategory.BASIC) itemsToRemove.add(vehicle);
+                        break;
+                    case MEDIUM:
+                        if(vehicle.getVehicleCategory() != VehicleCategory.MEDIUM) itemsToRemove.add(vehicle);
+                        break;
+                    case LUXURY:
+                        if(vehicle.getVehicleCategory() != VehicleCategory.LUXURY) itemsToRemove.add(vehicle);
                         break;
                 }
             });

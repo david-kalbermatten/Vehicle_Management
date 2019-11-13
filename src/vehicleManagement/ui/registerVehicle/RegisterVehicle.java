@@ -85,6 +85,8 @@ public class RegisterVehicle implements Initializable {
         if(isAllSet()) {
             saveVehicle(vehicleType.getValue());
             try {
+                GlobalVars.vehicleToEdit = null;
+                GlobalVars.inVehicleEditMode = false;
                 ValidatorService.showSnackbar("Successfully Saved Vehicle", ((BorderPane) root.getParent()));
                 Parent view = FXMLLoader.load(getClass().getResource("../displayVehicles/displayVehicles.fxml"));
                 ((BorderPane) root.getParent()).setCenter(view);

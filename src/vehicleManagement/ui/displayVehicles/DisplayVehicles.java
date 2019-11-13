@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.Vehicle;
+import vehicleManagement.data.vehicle.VehicleCategory;
+import vehicleManagement.data.vehicle.VehicleTypes;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.ui.InterfaceInitializer;
@@ -27,10 +30,10 @@ import java.util.ResourceBundle;
 
 public class DisplayVehicles implements Initializable {
     public AnchorPane root;
-    public JFXComboBox vehicleType;
-    public JFXTextField make;
     public JFXTreeTableView vehicleTable;
     public JFXButton confirmButton;
+    public JFXComboBox<VehicleTypes> vehicleType;
+    public JFXComboBox<VehicleCategory> vehicleCategory;
     //Data
     private VehicleService vehicleService;
 
@@ -39,10 +42,12 @@ public class DisplayVehicles implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vehicleService = GlobalVars.vService;
+        vehicleType.getItems().setAll(VehicleTypes.values());
+        vehicleCategory.getItems().setAll(VehicleCategory.values());
         defineInputFieldList();
         GlobalVars.resizeStage(root);
         InterfaceInitializer.initializeVehicleTableView(vehicleTable);
-        InterfaceInitializer.populateTableView(vehicleService.vehicleList, vehicleTable);
+        populateTableView();
     }
 
     public void confirm() {
@@ -67,5 +72,14 @@ public class DisplayVehicles implements Initializable {
                         vehicleTable
                 )
         );
+    }
+
+    public void populateTableView() {
+        InterfaceInitializer.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), true), vehicleTable);
+    }
+
+    public void resetFilters() {
+        vehicleType.getSelectionModel().select(-1);
+        vehicleCategory.getSelectionModel().select(-1);
     }
 }

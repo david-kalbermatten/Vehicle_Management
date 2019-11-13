@@ -10,11 +10,11 @@
          <children>
             <BorderPane>
                <right>
-                  <JFXButton mnemonicParsing="false" styleClass="regular-button" text="Reset Filters" BorderPane.alignment="CENTER" />
+                  <JFXButton mnemonicParsing="false" onAction="#resetFilters" styleClass="regular-button" text="Reset Filters" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
-            <JFXComboBox fx:id="vehicleType" prefWidth="150.0" promptText="Vehicle Type" styleClass="input-field" />
-            <JFXTextField fx:id="make" promptText="Make" styleClass="input-field" />
+            <JFXComboBox fx:id="vehicleType" onAction="#populateTableView" prefWidth="150.0" promptText="Vehicle Type" styleClass="input-field" />
+            <JFXComboBox fx:id="vehicleCategory" layoutX="10.0" layoutY="58.0" onAction="#populateTableView" prefWidth="150.0" promptText="Vehicle Category" styleClass="input-field" />
          </children>
       </VBox>
       <JFXButton fx:id="confirmButton" layoutX="434.0" layoutY="219.0" mnemonicParsing="false" onAction="#confirm" onZoomFinished="#confirm" styleClass="regular-button" text="Edit Selected Vehicle" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />

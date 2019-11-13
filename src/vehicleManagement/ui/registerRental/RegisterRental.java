@@ -61,7 +61,7 @@ public class RegisterRental implements Initializable {
             try {
                 GlobalVars.rentalToEdit = null;
                 GlobalVars.inRentalEditMode = false;
-                ValidatorService.showSnackbar("Successfully Saved Vehicle", ((BorderPane) root.getParent()));
+                ValidatorService.showSnackbar("Successfully saved Rental", ((BorderPane) root.getParent()));
                 Parent view = FXMLLoader.load(getClass().getResource("../displayRentals/displayRentals.fxml"));
                 ((BorderPane) root.getParent()).setCenter(view);
             } catch (IOException e) {

@@ -7,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
-import javafx.stage.Stage;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.ValidatorService;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
 
 public class RegisterVehicle implements Initializable {
     private VehicleService vehicleService = GlobalVars.vService;
@@ -87,7 +84,7 @@ public class RegisterVehicle implements Initializable {
             try {
                 GlobalVars.vehicleToEdit = null;
                 GlobalVars.inVehicleEditMode = false;
-                ValidatorService.showSnackbar("Successfully Saved Vehicle", ((BorderPane) root.getParent()));
+                ValidatorService.showSnackbar("Successfully saved Vehicle", ((BorderPane) root.getParent()));
                 Parent view = FXMLLoader.load(getClass().getResource("../displayVehicles/displayVehicles.fxml"));
                 ((BorderPane) root.getParent()).setCenter(view);
 

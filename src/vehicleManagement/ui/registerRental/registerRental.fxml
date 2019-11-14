@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<AnchorPane fx:id="root" minHeight="482.0" minWidth="867.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" minHeight="482.0" minWidth="867.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vehicleManagement.ui.registerRental.RegisterRental">
    <children>
       <HBox alignment="BOTTOM_LEFT" layoutX="265.0" layoutY="14.0" prefHeight="36.0" spacing="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="472.0" AnchorPane.topAnchor="14.0">
          <children>
             <JFXComboBox fx:id="vehicleType" onAction="#populateTableView" prefWidth="120.0" promptText="Vehicle Type" styleClass="input-field-color" />
             <JFXComboBox fx:id="vehicleCategory" layoutX="10.0" layoutY="25.0" onAction="#populateTableView" prefWidth="120.0" promptText="Vehicle Category" styleClass="input-field-color" />
+            <JFXButton mnemonicParsing="false" onAction="#resetFilters" styleClass="regular-button" text="Reset Filters" BorderPane.alignment="CENTER" />
          </children></HBox>
       <JFXTreeTableView fx:id="vehicleTable" layoutX="14.0" layoutY="14.0" styleClass="tree-table-view" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="472.0" AnchorPane.topAnchor="68.0" />
       <VBox layoutX="581.0" layoutY="78.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="68.0">

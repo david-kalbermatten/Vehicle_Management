@@ -1,6 +1,7 @@
 package vehicleManagement.ui.registerRental;
 
 import com.jfoenix.controls.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -161,5 +162,10 @@ public class RegisterRental implements Initializable {
 
     public void populateTableView() {
         ViewController.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
+    }
+
+    public void resetFilters() {
+        vehicleType.getSelectionModel().select(-1);
+        vehicleCategory.getSelectionModel().select(-1);
     }
 }

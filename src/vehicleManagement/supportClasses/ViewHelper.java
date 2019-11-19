@@ -1,9 +1,20 @@
 package vehicleManagement.supportClasses;
 
 import com.jfoenix.controls.*;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Control;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+import javafx.util.StringConverter;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
 import vehicleManagement.data.vehicle.FuelType;
@@ -11,6 +22,8 @@ import vehicleManagement.data.vehicle.Vehicle;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class ViewHelper {
     public static void initializeVehicleTableView(JFXTreeTableView treeTableView) {
@@ -91,5 +104,78 @@ public class ViewHelper {
         if(tableView.getSelectionModel().getSelectedIndex() == -1) {
             tableView.getRoot().getChildren().add(treeItem);
         }
+    }
+
+
+    public static void setInputFieldToInteger(TextField textField) {
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            String text = change.getText();
+
+            if (text.matches("[0-9]*")) {
+                return change;
+            }
+
+            return null;
+        };
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+        textField.setTextFormatter(textFormatter);
+    }
+
+    public static void setInputFieldToDouble(TextField textField) {
+        Pattern validEditingState = Pattern.compile("-?(([1-9][0-9]*)|0)?(\\.[0-9]*)?");
+
+        UnaryOperator<TextFormatter.Change> filter = c -> {
+            String text = c.getControlNewText();
+            if (validEditingState.matcher(text).matches()) {
+                return c ;
+            } else {
+                return null ;
+            }
+        };
+
+        StringConverter<Double> converter = new StringConverter<Double>() {
+
+            @Override
+            public Double fromString(String s) {
+                if (s.isEmpty() || "-".equals(s) || ".".equals(s) || "-.".equals(s)) {
+                    return 0.0 ;
+                } else {
+                    return Double.valueOf(s);
+                }
+            }
+
+
+            @Override
+            public String toString(Double d) {
+                return d.toString();
+            }
+        };
+        TextFormatter<Double> textFormatter = new TextFormatter<>(converter, 0.0, filter);
+        textField.setTextFormatter(textFormatter);
+        textField.setText("");
+    }
+
+    public static void showSnackbar(String message, Pane rootElement) {
+        JFXSnackbar snackbar = new JFXSnackbar(rootElement);
+        BorderPane snackBarContainer = new BorderPane();
+        Text snackBarText = new Text("Placeholder SnackBar Text");
+
+        //Styling
+        snackBarContainer.setPrefWidth(rootElement.getWidth());
+        rootElement.widthProperty().addListener((observable, oldValue, newValue) -> snackBarContainer.setPrefWidth(newValue.floatValue()));
+        snackBarContainer.setPrefHeight(30);
+        snackBarContainer.setBackground(new Background(new BackgroundFill(Color.rgb(40,40,40), CornerRadii.EMPTY, Insets.EMPTY)));
+        snackBarText.setFill(Paint.valueOf("white"));
+        snackbar.setEffect(new DropShadow(8,0,-2,Color.rgb(54,54,54,0.5)));
+
+        snackBarContainer.setLeft(snackBarText);
+        BorderPane.setAlignment(snackBarText, Pos.CENTER_LEFT);
+
+        snackBarText.setText(message);
+        snackbar.enqueue(new JFXSnackbar.SnackbarEvent(snackBarContainer, Duration.seconds(3)));
+    }
+
+    public static boolean containsIgnoreCase(String str, String subString) {
+        return str.toLowerCase().contains(subString.toLowerCase());
     }
 }

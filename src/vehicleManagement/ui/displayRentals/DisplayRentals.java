@@ -14,7 +14,6 @@ import vehicleManagement.GlobalVars;
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
 import vehicleManagement.services.RentalService;
-import vehicleManagement.services.ValidatorService;
 import vehicleManagement.supportClasses.ViewHelper;
 
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class DisplayRentals implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            ValidatorService.showSnackbar("No Rental selected", root);
+            ViewHelper.showSnackbar("No Rental selected", root);
         }
 
     }
@@ -78,7 +77,7 @@ public class DisplayRentals implements Initializable {
             rentalService.removeRental((Rental) rentalTable.getTreeItem(rentalTable.getSelectionModel().getFocusedIndex()).getValue());
             populateTableView();
         } else {
-            ValidatorService.showSnackbar("No Rental selected", root);
+            ViewHelper.showSnackbar("No Rental selected", root);
         }
     }
 

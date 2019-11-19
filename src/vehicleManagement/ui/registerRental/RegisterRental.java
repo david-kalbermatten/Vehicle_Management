@@ -12,7 +12,6 @@ import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
 import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.RentalService;
-import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.supportClasses.ViewHelper;
 
@@ -61,14 +60,14 @@ public class RegisterRental implements Initializable {
             try {
                 GlobalVars.rentalToEdit = null;
                 GlobalVars.inRentalEditMode = false;
-                ValidatorService.showSnackbar("Successfully saved Rental", ((BorderPane) root.getParent()));
+                ViewHelper.showSnackbar("Successfully saved Rental", ((BorderPane) root.getParent()));
                 Parent view = FXMLLoader.load(getClass().getResource("../displayRentals/displayRentals.fxml"));
                 ((BorderPane) root.getParent()).setCenter(view);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            ValidatorService.showSnackbar("Not All Set", root);
+            ViewHelper.showSnackbar("Not All Set", root);
         }
     }
 
@@ -76,8 +75,8 @@ public class RegisterRental implements Initializable {
         vehicleType.getItems().setAll(VehicleTypes.values());
         vehicleCategory.getItems().setAll(VehicleCategory.values());
         rentalStatus.getItems().setAll(RentalStatus.values());
-        ValidatorService.setInputFieldToInteger(plz);
-        ValidatorService.setInputFieldToDouble(rentalPrice);
+        ViewHelper.setInputFieldToInteger(plz);
+        ViewHelper.setInputFieldToDouble(rentalPrice);
         ViewHelper.initializeVehicleTableView(vehicleTable);
         populateTableView();
 

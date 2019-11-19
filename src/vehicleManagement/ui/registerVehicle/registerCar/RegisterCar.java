@@ -6,7 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import vehicleManagement.data.vehicle.CarType;
-import vehicleManagement.services.ValidatorService;
+import vehicleManagement.supportClasses.ViewHelper;
 import vehicleManagement.ui.registerVehicle.RegisterVehicle;
 
 import java.net.URL;
@@ -23,7 +23,7 @@ public class RegisterCar implements Initializable {
         RegisterVehicle.hasSatNav = hasSatNav;
         RegisterVehicle.carType = carType;
 
-        ValidatorService.setInputFieldToInteger(trunkSpace);
+        ViewHelper.setInputFieldToInteger(trunkSpace);
 
         carType.getItems().setAll(CarType.values());
 

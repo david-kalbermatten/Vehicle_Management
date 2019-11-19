@@ -9,7 +9,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
 import vehicleManagement.data.vehicle.*;
-import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.supportClasses.ViewHelper;
 
@@ -72,10 +71,10 @@ public class RegisterVehicle implements Initializable {
         GlobalVars.resizeStage(root);
 
         //InputField Validation
-        ValidatorService.setInputFieldToInteger(ccm);
-        ValidatorService.setInputFieldToInteger(millage);
-        ValidatorService.setInputFieldToInteger(numberOfSeats);
-        ValidatorService.setInputFieldToDouble(priceOfPurchase);
+        ViewHelper.setInputFieldToInteger(ccm);
+        ViewHelper.setInputFieldToInteger(millage);
+        ViewHelper.setInputFieldToInteger(numberOfSeats);
+        ViewHelper.setInputFieldToDouble(priceOfPurchase);
     }
 
     public void confirm() {
@@ -84,7 +83,7 @@ public class RegisterVehicle implements Initializable {
             try {
                 GlobalVars.vehicleToEdit = null;
                 GlobalVars.inVehicleEditMode = false;
-                ValidatorService.showSnackbar("Successfully saved Vehicle", ((BorderPane) root.getParent()));
+                ViewHelper.showSnackbar("Successfully saved Vehicle", ((BorderPane) root.getParent()));
                 Parent view = FXMLLoader.load(getClass().getResource("../displayVehicles/displayVehicles.fxml"));
                 ((BorderPane) root.getParent()).setCenter(view);
 
@@ -92,7 +91,7 @@ public class RegisterVehicle implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            ValidatorService.showSnackbar("Not all fields have been set!", root);
+            ViewHelper.showSnackbar("Not all fields have been set!", root);
         }
     }
 

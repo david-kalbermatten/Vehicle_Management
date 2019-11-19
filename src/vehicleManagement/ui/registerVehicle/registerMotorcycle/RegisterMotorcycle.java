@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import vehicleManagement.services.ValidatorService;
+import vehicleManagement.supportClasses.ViewHelper;
 import vehicleManagement.ui.registerVehicle.RegisterVehicle;
 
 import java.net.URL;
@@ -20,6 +20,6 @@ public class RegisterMotorcycle implements Initializable {
         RegisterVehicle.fuelCapacity = fuelCapacity;
         RegisterVehicle.hasSatchel = hasSatchel;
 
-        ValidatorService.setInputFieldToInteger(fuelCapacity);
+        ViewHelper.setInputFieldToInteger(fuelCapacity);
     }
 }

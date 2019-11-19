@@ -3,7 +3,7 @@ package vehicleManagement.ui.registerVehicle.registerTransporter;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import vehicleManagement.services.ValidatorService;
+import vehicleManagement.supportClasses.ViewHelper;
 import vehicleManagement.ui.registerVehicle.RegisterVehicle;
 
 import java.net.URL;
@@ -20,7 +20,7 @@ public class RegisterTransporter implements Initializable {
         RegisterVehicle.loadingWeightInKG = loadingWeightInKG;
         RegisterVehicle.heightInCm = heightInCm;
 
-        ValidatorService.setInputFieldToDouble(loadingWeightInKG);
-        ValidatorService.setInputFieldToDouble(heightInCm);
+        ViewHelper.setInputFieldToDouble(loadingWeightInKG);
+        ViewHelper.setInputFieldToDouble(heightInCm);
     }
 }

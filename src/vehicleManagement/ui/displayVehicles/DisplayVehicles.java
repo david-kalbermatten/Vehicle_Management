@@ -10,10 +10,10 @@ import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import vehicleManagement.GlobalVars;
+import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.vehicle.Vehicle;
 import vehicleManagement.data.vehicle.VehicleCategory;
 import vehicleManagement.data.vehicle.VehicleTypes;
-import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
 import vehicleManagement.supportClasses.ViewHelper;
 
@@ -45,6 +45,16 @@ public class DisplayVehicles implements Initializable {
         GlobalVars.resizeStage(root);
         ViewHelper.initializeVehicleTableView(vehicleTable);
         populateTableView();
+        vehicleTable.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            for (Rental rental : GlobalVars.rService.rentalList) {
+                if(rental.getVehicle() == vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getSelectedIndex()).getValue()) {
+                    deleteButton.setDisable(true);
+                    break;
+                } else {
+                    deleteButton.setDisable(false);
+                }
+            }
+        });
     }
 
     public void confirm() {
@@ -58,7 +68,7 @@ public class DisplayVehicles implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            ValidatorService.showSnackbar("No Vehicle selected", root);
+            ViewHelper.showSnackbar("No Vehicle selected", root);
         }
 
     }
@@ -85,7 +95,7 @@ public class DisplayVehicles implements Initializable {
             vehicleService.removeVehicle((Vehicle) vehicleTable.getTreeItem(vehicleTable.getSelectionModel().getFocusedIndex()).getValue());
             populateTableView();
         } else {
-            ValidatorService.showSnackbar("No Vehicle selected", root);
+            ViewHelper.showSnackbar("No Vehicle selected", root);
         }
     }
 }

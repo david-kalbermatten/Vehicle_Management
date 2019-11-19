@@ -25,6 +25,8 @@ public class VehicleService {
             list.forEach(vehicle -> {
                 if(!vehicle.isAvailability()) itemsToRemove.add(vehicle);
             });
+            list.removeAll(itemsToRemove);
+            itemsToRemove.clear();
         }
         if(vehicleType != null) {
             list.forEach(vehicle -> {

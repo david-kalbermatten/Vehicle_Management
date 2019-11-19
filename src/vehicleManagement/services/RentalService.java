@@ -2,6 +2,7 @@ package vehicleManagement.services;
 
 import vehicleManagement.data.rental.Rental;
 import vehicleManagement.data.rental.RentalStatus;
+import vehicleManagement.supportClasses.ViewHelper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -40,10 +41,9 @@ public class RentalService {
         }
         if (!customerName.isEmpty()) {
             list.forEach(rental -> {
-                if (!((ValidatorService.containsIgnoreCase(rental.getCustomerName(), customerName)) || ValidatorService.containsIgnoreCase(rental.getCustomerSurname(), customerName))) {
+                if (!((ViewHelper.containsIgnoreCase(rental.getCustomerName(), customerName)) || ViewHelper.containsIgnoreCase(rental.getCustomerSurname(), customerName))) {
                     itemsToRemove.add(rental);
                 }
-                ;
             });
             list.removeAll(itemsToRemove);
             itemsToRemove.clear();

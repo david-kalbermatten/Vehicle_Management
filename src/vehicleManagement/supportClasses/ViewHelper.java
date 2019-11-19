@@ -102,7 +102,8 @@ public class ViewHelper {
             }
         }
         if(tableView.getSelectionModel().getSelectedIndex() == -1) {
-            tableView.getRoot().getChildren().add(treeItem);
+            tableView.getRoot().getChildren().add(new TreeItem<>(treeItem));
+            tableView.getSelectionModel().selectLast();
         }
     }
 

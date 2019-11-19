@@ -1,4 +1,4 @@
-package vehicleManagement.data.supportClasses;
+package vehicleManagement.supportClasses;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

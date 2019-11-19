@@ -2,8 +2,8 @@ package vehicleManagement.data.rental;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import vehicleManagement.data.supportClasses.LocalDateDeserializer;
-import vehicleManagement.data.supportClasses.LocalDateSerializer;
+import vehicleManagement.supportClasses.LocalDateDeserializer;
+import vehicleManagement.supportClasses.LocalDateSerializer;
 import vehicleManagement.data.vehicle.Vehicle;
 
 import java.time.LocalDate;

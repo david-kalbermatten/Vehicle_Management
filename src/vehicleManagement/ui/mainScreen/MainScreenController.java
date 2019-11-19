@@ -23,9 +23,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
-    VehicleService vehicleService = GlobalVars.vService;
-    RentalService rentalService = GlobalVars.rService;
-
     @FXML BorderPane rootElement;
     @FXML JFXButton displayVehicles;
     @FXML VBox sideMenu;

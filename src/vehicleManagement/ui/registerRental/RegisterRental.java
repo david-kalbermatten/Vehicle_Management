@@ -1,7 +1,6 @@
 package vehicleManagement.ui.registerRental;
 
 import com.jfoenix.controls.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,7 +14,7 @@ import vehicleManagement.data.vehicle.*;
 import vehicleManagement.services.RentalService;
 import vehicleManagement.services.ValidatorService;
 import vehicleManagement.services.VehicleService;
-import vehicleManagement.ui.ViewController;
+import vehicleManagement.supportClasses.ViewHelper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +56,7 @@ public class RegisterRental implements Initializable {
     }
 
     public void confirm() {
-        if(ViewController.isAllSet(inputFieldList)) {
+        if(ViewHelper.isAllSet(inputFieldList)) {
             saveRental();
             try {
                 GlobalVars.rentalToEdit = null;
@@ -79,7 +78,7 @@ public class RegisterRental implements Initializable {
         rentalStatus.getItems().setAll(RentalStatus.values());
         ValidatorService.setInputFieldToInteger(plz);
         ValidatorService.setInputFieldToDouble(rentalPrice);
-        ViewController.initializeVehicleTableView(vehicleTable);
+        ViewHelper.initializeVehicleTableView(vehicleTable);
         populateTableView();
 
         if(isInEditMode) {
@@ -137,7 +136,7 @@ public class RegisterRental implements Initializable {
         birthday.setValue(rentalToEdit.getCustomerBirthday());
         licenseId.setText(rentalToEdit.getCustomerLicenseID());
 
-        ViewController.setSelectedOnTableView(vehicleTable, rentalToEdit.getVehicle());
+        ViewHelper.setSelectedOnTableView(vehicleTable, rentalToEdit.getVehicle());
     }
 
     private void initializeInputFieldList() {
@@ -161,7 +160,7 @@ public class RegisterRental implements Initializable {
     }
 
     public void populateTableView() {
-        ViewController.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
+        ViewHelper.populateTableView(vehicleService.getFilteredList(vehicleType.getValue(), vehicleCategory.getValue(), false), vehicleTable);
     }
 
     public void resetFilters() {

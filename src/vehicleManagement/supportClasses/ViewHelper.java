@@ -1,4 +1,4 @@
-package vehicleManagement.ui;
+package vehicleManagement.supportClasses;
 
 import com.jfoenix.controls.*;
 import javafx.scene.control.Control;
@@ -12,7 +12,7 @@ import vehicleManagement.data.vehicle.Vehicle;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ViewController {
+public class ViewHelper {
     public static void initializeVehicleTableView(JFXTreeTableView treeTableView) {
         //Prepare Vehicle Table View
         JFXTreeTableColumn<Vehicle, String> columnId = new JFXTreeTableColumn<>("ID");

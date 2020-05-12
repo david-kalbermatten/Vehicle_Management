@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="640.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.invictech.vehicleManagement.ui.displayRentals.DisplayRentals">
+   <children>
+      <JFXTreeTableView fx:id="rentalTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="243.0" AnchorPane.topAnchor="14.0" />
+      <VBox layoutX="386.0" layoutY="14.0" prefHeight="242.0" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <BorderPane>
+               <right>
+                  <JFXButton mnemonicParsing="false" onAction="#resetFilters" styleClass="regular-button" text="Reset Filters" BorderPane.alignment="CENTER" />
+               </right>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <left>
+                  <JFXButton mnemonicParsing="false" onAction="#delete" styleClass="delete-button" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Delete Rental" BorderPane.alignment="CENTER" />
+               </left>
+            </BorderPane>
+            <JFXComboBox fx:id="rentalStatus" onAction="#populateTableView" prefWidth="150.0" promptText="Rental Status" styleClass="input-field" />
+            <JFXTextField fx:id="customerName" promptText="Customer Name" styleClass="input-field">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXDatePicker fx:id="rentalDate" defaultColor="#004f8f" promptText="Rental Date" styleClass="input-field" />
+         </children>
+      </VBox>
+      <JFXButton layoutX="434.0" layoutY="219.0" mnemonicParsing="false" onAction="#confirm" styleClass="regular-button" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Edit Selected Rental" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>

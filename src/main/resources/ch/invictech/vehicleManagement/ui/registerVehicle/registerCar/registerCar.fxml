@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="215.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.invictech.vehicleManagement.ui.registerVehicle.registerCar.RegisterCar">
+   <children>
+      <JFXTextField fx:id="trunkSpace" labelFloat="true" promptText="Trunk Space in [Number of Suitcases]" styleClass="input-field" stylesheets="@../../styles/styles.css">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin></JFXTextField>
+      <JFXComboBox fx:id="carType" prefWidth="215.0" promptText="Car Type" styleClass="input-field" stylesheets="@../../styles/styles.css" />
+      <JFXCheckBox fx:id="hasSatNav" mnemonicParsing="false" styleClass="input-field" stylesheets="@../../styles/styles.css" text="Has SatNav" />
+   </children>
+</VBox>

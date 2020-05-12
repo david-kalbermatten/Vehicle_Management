@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.invictech.vehicleManagement.ui.mainScreen.MainScreenController">
+   <left>
+      <VBox fx:id="sideMenu" styleClass="side-menu" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER">
+         <JFXButton fx:id="displayVehicles" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewDisplayVehicles" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Display Vehicles">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton fx:id="displayRentals" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewDisplayRentals" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Display Rentals">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton fx:id="addVehicle" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#changeViewRegisterVehicle" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Register Vehicle">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+         <JFXButton fx:id="addRental" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="90.0" onAction="#changeViewRegisterRental" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" text="Register Rental">
+            <styleClass>
+               <String fx:value="side-menu" />
+               <String fx:value="menu-item" />
+            </styleClass>
+         </JFXButton>
+      </VBox>
+   </left>
+   <center>
+      <BorderPane fx:id="rootElement" prefHeight="410.0" prefWidth="640.0" styleClass="main-pane" stylesheets="@/ch/invictech/vehicleManagement/ui/styles/styles.css" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
